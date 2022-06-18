@@ -1,12 +1,15 @@
 {
 	"name": "@ulleritech/nepali-date-picker",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "Nepali Date Picker",
 	"author": {
 		"name": "Ulleri Tech",
 		"email": "ulleri.tech@gmail.com",
 		"url": "https://ulleri.tech"
 	},
+	"bugs": "https://github.com/Ulleri-Tech/nepali-date-picker/issues",
+	"homepage": "https://github.com/Ulleri-Tech/nepali-date-picker",
+	"license": "MIT",
 	"scripts": {
 		"dev": "svelte-kit dev",
 		"build": "svelte-kit build",
@@ -40,6 +43,11 @@
 		"typescript": "^4.7.2"
 	},
 	"type": "module",
+	"keywords": [
+		"nepali-date-chooser",
+		"select-date-nepali",
+		"BS-date-picker"
+	  ],
 	"dependencies": {
 		"nepali-date-converter": "^3.3.1"
 	}
