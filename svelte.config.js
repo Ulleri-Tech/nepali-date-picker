@@ -15,6 +15,13 @@ const config = {
 		},
 		package: {
 			dir: 'nepali-date-picker'
+		},
+		vite: {
+			"server": {
+				"fs": {
+					allow: ['nepali-date-picker']
+				}
+			}
 		}
 	},
 	preprocess: [

@@ -1,6 +1,6 @@
 {
 	"name": "@ulleritech/nepali-date-picker",
-	"version": "0.0.5",
+	"version": "0.0.7",
 	"description": "Nepali Date Picker",
 	"author": {
 		"name": "Ulleri Tech",
@@ -47,8 +47,9 @@
 		"nepali-date-chooser",
 		"select-date-nepali",
 		"BS-date-picker"
-	  ],
+	],
 	"dependencies": {
+		"@ulleritech/nepali-date-picker": "file:nepali-date-picker",
 		"nepali-date-converter": "^3.3.1"
 	}
 }
