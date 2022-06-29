@@ -1,6 +1,7 @@
 <script lang="ts">
 	import NepaliDate from 'nepali-date-converter';
 	import { onMount } from 'svelte';
+	import './style.css';
 
 	const firstDayOfEachMonth = {
 		'2078': ['Wed', 'Sat', 'Tue', 'Fri', 'Tue', 'Fri', 'Mon', 'Wed', 'Thu', 'Sat', 'Sun', 'Tue'],
@@ -146,7 +147,7 @@
 									<tr>
 										{#each col as i}
 											<td>
-												<div class="flex justify-center p-2 w-full cursor-pointer">
+												<div class="flex justify-center p-1.5 w-full">
 													{#if i > 0}
 														{#if i === selectedDay}
 															<button
@@ -161,7 +162,7 @@
 														{:else}
 															<p class="text-sm font-medium text-gray-500 sm:text-base">
 																<button
-																	class="border-none"
+																	class="border-none w-6 h-6"
 																	class:font-extrabold={inCurrentMonth && currentDay === i}
 																	on:click={() => {
 																		selectDate(selectedYear, selectedMonth, i);
