@@ -1,3 +1,3 @@
-import NepaliDatePicker from './NepaliDatePicker.svelte'
+import NepaliDatePicker from './NepaliDatePicker.svelte';
 
-export { NepaliDatePicker }
+export { NepaliDatePicker };

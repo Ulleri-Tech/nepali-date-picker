@@ -17,8 +17,8 @@ const config = {
 			dir: 'nepali-date-picker'
 		},
 		vite: {
-			"server": {
-				"fs": {
+			server: {
+				fs: {
 					allow: ['nepali-date-picker']
 				}
 			}
