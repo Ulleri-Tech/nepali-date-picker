@@ -40,22 +40,20 @@
 	};
 </script>
 
-<div class="flex justify-between items-center">
-	<div class="dropdown" on:focusout={handleDropdownFocusLoss}>
-		<button class="btn m-1" on:click={handleDropdownClick}>
-			<div class="flex flex-col gap-1 w-36">
-				<label for="date" class="mb-2 h-4 font-bold">Date</label>
-				<div
-					class="flex items-center ml-0.5 p-4 h-9 bg-white outline outline-[0.5px] solid outline-gray-500"
-				>
+<div>
+	<div on:focusout={handleDropdownFocusLoss}>
+		<button style="margin:0.25rem" on:click={handleDropdownClick}>
+			<div style="display:flex; flex-direction:column; gap:0.25rem;">
+				<label for="date" class="date-label">Date</label>
+				<div class="date-select-box">
 					<input
 						placeholder="YYYY/MM/DD"
 						type="text"
 						bind:value={selectedDate}
 						disabled
-						class="w-24 bg-white"
+						style="width:6rem; background-color: rgb(255,255,255)"
 					/>
-					<div class="flex">
+					<div style="display: flex;">
 						<svg
 							width="14"
 							height="20"
@@ -74,7 +72,7 @@
 			</div>
 		</button>
 
-		<div class="absolute" style:visibility={isOpenCalendar ? 'visible' : 'hidden'}>
+		<div style="position: absolute;" style:visibility={isOpenCalendar ? 'visible' : 'hidden'}>
 			<Calender
 				bind:open={isOpenCalendar}
 				bind:selectedMonth
@@ -87,3 +85,24 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.date-label {
+		text-align: left;
+		margin-bottom: 0.5rem;
+		height: 1rem;
+		font-weight: 700;
+	}
+	.date-select-box {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		padding: 1rem;
+		height: 2.25rem;
+		margin-left: 0.125rem;
+		background-color: white;
+		outline-style: solid;
+		outline-width: 0.5px;
+		outline-color: #6b7280;
+	}
+</style>
