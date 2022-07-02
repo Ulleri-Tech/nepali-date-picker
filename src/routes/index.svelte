@@ -2,7 +2,20 @@
 	import { NepaliDatePicker } from '$lib';
 </script>
 
-<div class="flex flex-col items-center justify-center w-full mx-auto gap-10">
-	<h1 class="text-4xl">Example</h1>
+<div class="main">
+	<h1 style="font-size: 2.25rem; line-height:2.5rem">Example</h1>
 	<NepaliDatePicker selectedDate="2079/02/30" />
 </div>
+
+<style>
+	.main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		gap: 2.5rem;
+	}
+</style>

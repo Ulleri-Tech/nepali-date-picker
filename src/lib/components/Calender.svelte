@@ -24,8 +24,8 @@
 </script>
 
 <div class="main">
-	<div class="header justify-between">
-		<span class="font-bold text-sm text-gray-800 sm:text-base focus:outline-none">
+	<div class="header">
+		<span class="header-month">
 			{new NepaliDate(selectedYear, selectedMonth - 1, 1).format('MMMM YYYY')}
 		</span>
 		<ShiftMonth bind:selectedMonth bind:selectedYear {updateRows} />
@@ -36,10 +36,8 @@
 			<tr>
 				{#each arrDays as day}
 					<th>
-						<div class="flex justify-center w-full">
-							<p class="text-sm font-medium text-center text-gray-800 sm:text-base">
-								{day}
-							</p>
+						<div class="text-day">
+							{day}
 						</div>
 					</th>
 				{/each}
@@ -50,7 +48,7 @@
 				<tr>
 					{#each col as i}
 						<td>
-							<div class="flex justify-center p-2 w-full cursor-pointer">
+							<div class="month-days">
 								{#if i > 0}
 									{#if i === selectedDay}
 										<button
@@ -58,14 +56,14 @@
 											on:click={() => {
 												selectDate(selectedYear, selectedMonth, i);
 											}}
-											class="flex justify-center items-center w-8 h-8 text-sm text-white bg-indigo-700 rounded sm:text-base hover:bg-indigo-500 focus:bg-indigo-500 focus:ring-2 focus:ring-indigo-700 focus:ring-offset-2 focus:outline-none"
+											class="selected-day"
 											class:font-extrabold={inCurrentMonth && currentDay === i}>{i}</button
 										>
 									{:else}
-										<p class="text-sm font-medium text-gray-500 sm:text-base">
+										<p class="text-day">
 											<button
-												class="border-none"
-												class:font-extrabold={inCurrentMonth && currentDay === i}
+												style="border-style: none;"
+												style:font-weight={inCurrentMonth && currentDay === i ? '800' : '400'}
 												on:click={() => {
 													selectDate(selectedYear, selectedMonth, i);
 												}}
@@ -99,5 +97,40 @@
 		width: 100%;
 		padding: 1rem;
 		justify-content: space-between;
+	}
+	.header-month {
+		color: #1f2937;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 700;
+	}
+	.text-day {
+		color: #1f2937;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		font-weight: 500;
+		text-align: center;
+	}
+	.selected-day {
+		display: flex;
+		background-color: #4338ca;
+		color: #ffffff;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		justify-content: center;
+		align-items: center;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 0.25rem;
+	}
+	.selected-day:hover {
+		background-color: #6366f1;
+	}
+	.month-days {
+		display: flex;
+		padding: 0.5rem;
+		justify-content: center;
+		width: 100%;
+		cursor: pointer;
 	}
 </style>
