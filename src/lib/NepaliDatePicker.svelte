@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NepaliDate from 'nepali-date-converter';
 	import { onMount } from 'svelte';
-	import Calender from './components/Calender.svelte';
+	import Calendar from './components/Calendar.svelte';
 	import { numberOfDaysEachMonth, firstDayOfEachMonth } from './data';
 	export let selectedDate: any;
 
@@ -73,7 +73,7 @@
 		</button>
 
 		<div style="position: absolute;" style:visibility={isOpenCalendar ? 'visible' : 'hidden'}>
-			<Calender
+			<Calendar
 				bind:open={isOpenCalendar}
 				bind:selectedMonth
 				bind:selectedYear
