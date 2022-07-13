@@ -80,14 +80,7 @@
 
 <style>
 	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		gap: 2.5rem;
+		width: 100px;
 	}
 
 	.date-container {
