@@ -42,35 +42,27 @@
 
 <div>
 	<div on:focusout={handleDropdownFocusLoss}>
-		<button style="margin:0.25rem" on:click={handleDropdownClick}>
-			<div style="display:flex; flex-direction:column; gap:0.25rem;">
-				<label for="date" class="date-label">Date</label>
-				<div class="date-select-box">
-					<input
-						placeholder="YYYY/MM/DD"
-						type="text"
-						bind:value={selectedDate}
-						disabled
-						style="width:6rem; background-color: rgb(255,255,255)"
-					/>
-					<div style="display: flex;">
-						<svg
-							width="14"
-							height="20"
-							viewBox="0 0 40 44"
-							fill="none"
-							xmlns="http://www.w3.org/2000/svg"
-						>
-							<path
-								d="M36 4H34V0H30V4H10V0H6V4H4C1.8 4 0 5.8 0 8V40C0 42.2 1.8 44 4 44H36C38.2 44 40 42.2 40 40V8C40 5.8 38.2 4 36 4ZM36 40H4V14H36V40Z"
-								fill="black"
-								fill-opacity="0.56"
-							/>
-						</svg>
-					</div>
+		<div class="date-container" on:click={handleDropdownClick}>
+			<label for="date" class="date-label">Date</label>
+			<div class="date-select-box">
+				<input placeholder="YYYY/MM/DD" type="text" bind:value={selectedDate} />
+				<div class="date-icon">
+					<svg
+						width="14"
+						height="20"
+						viewBox="0 0 40 44"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<path
+							d="M36 4H34V0H30V4H10V0H6V4H4C1.8 4 0 5.8 0 8V40C0 42.2 1.8 44 4 44H36C38.2 44 40 42.2 40 40V8C40 5.8 38.2 4 36 4ZM36 40H4V14H36V40Z"
+							fill="black"
+							fill-opacity="0.56"
+						/>
+					</svg>
 				</div>
 			</div>
-		</button>
+		</div>
 
 		<div style="position: absolute;" style:visibility={isOpenCalendar ? 'visible' : 'hidden'}>
 			<Calendar
@@ -87,6 +79,12 @@
 </div>
 
 <style>
+	.date-container {
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+		gap: 0.25rem;
+	}
 	.date-label {
 		text-align: left;
 		margin-bottom: 0.5rem;
@@ -95,14 +93,28 @@
 	}
 	.date-select-box {
 		display: flex;
-		justify-content: flex-start;
+		padding-left: 0.25rem;
+		justify-content: center;
 		align-items: center;
-		padding: 1rem;
 		height: 2.25rem;
-		margin-left: 0.125rem;
 		background-color: white;
 		outline-style: solid;
 		outline-width: 0.5px;
 		outline-color: #6b7280;
+	}
+	.date-icon {
+		padding-right: 0.75rem;
+		display: flex;
+	}
+	input {
+		background-color: transparent;
+		border: 0px solid;
+		height: 1rem;
+		width: 6rem;
+		text-align: center;
+	}
+	textarea:focus,
+	input:focus {
+		outline: none;
 	}
 </style>

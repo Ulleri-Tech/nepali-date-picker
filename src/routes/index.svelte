@@ -1,5 +1,5 @@
 <script>
-	import { NepaliDatePicker } from '@ulleritech/nepali-date-picker';
+	import { NepaliDatePicker } from '$lib';
 </script>
 
 <div class="main">

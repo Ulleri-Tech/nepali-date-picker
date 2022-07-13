@@ -31,7 +31,7 @@
 		<ShiftMonth bind:selectedMonth bind:selectedYear {updateRows} />
 	</div>
 
-	<table class="w-full">
+	<table class="w-full reset-this">
 		<thead>
 			<tr>
 				{#each arrDays as day}
@@ -95,7 +95,7 @@
 	.header {
 		display: flex;
 		width: 100%;
-		padding: 1rem;
+		padding: 0.5rem 0.5rem 0rem 0.5rem;
 		justify-content: space-between;
 	}
 	.header-month {
@@ -104,12 +104,17 @@
 		line-height: 1.25rem;
 		font-weight: 700;
 	}
+
+	button {
+		background-color: #ffffff;
+	}
 	.text-day {
 		color: #1f2937;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
 		font-weight: 500;
 		text-align: center;
+		background-color: #ffffff;
 	}
 	.selected-day {
 		display: flex;
@@ -119,8 +124,8 @@
 		line-height: 1.25rem;
 		justify-content: center;
 		align-items: center;
-		width: 2rem;
-		height: 2rem;
+		width: 1.5rem;
+		height: 1.5rem;
 		border-radius: 0.25rem;
 	}
 	.selected-day:hover {
@@ -128,9 +133,9 @@
 	}
 	.month-days {
 		display: flex;
-		padding: 0.5rem;
 		justify-content: center;
 		width: 100%;
 		cursor: pointer;
+		padding: 8px;
 	}
 </style>

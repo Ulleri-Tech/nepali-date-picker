@@ -27,7 +27,7 @@
 		type="button"
 		on:click={previousMonth}
 		aria-label="calendar backward"
-		style="color: rgb(31 41 55);"
+		style="color: rgb(31 41 55); background-color:white;"
 	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
