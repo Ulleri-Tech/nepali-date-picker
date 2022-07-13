@@ -23,12 +23,7 @@
 </script>
 
 <div>
-	<button
-		type="button"
-		on:click={previousMonth}
-		aria-label="calendar backward"
-		style="color: rgb(31 41 55); background-color:white;"
-	>
+	<button type="button" on:click={previousMonth} aria-label="calendar backward">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="icon icon-tabler icon-tabler-chevron-left"
@@ -46,12 +41,7 @@
 		</svg>
 	</button>
 
-	<button
-		type="button"
-		on:click={nextMonth}
-		aria-label="calendar forward"
-		style="margin-left: 0.75rem ; color: rgb(31 41 55);"
-	>
+	<button type="button" on:click={nextMonth} aria-label="calendar forward">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="icon icon-tabler icon-tabler-chevron-right"

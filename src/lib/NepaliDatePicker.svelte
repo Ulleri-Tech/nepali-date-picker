@@ -40,7 +40,7 @@
 	};
 </script>
 
-<div>
+<main>
 	<div on:focusout={handleDropdownFocusLoss}>
 		<div class="date-container" on:click={handleDropdownClick}>
 			<label for="date" class="date-label">Date</label>
@@ -76,9 +76,20 @@
 			/>
 		</div>
 	</div>
-</div>
+</main>
 
 <style>
+	main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		margin-left: auto;
+		margin-right: auto;
+		gap: 2.5rem;
+	}
+
 	.date-container {
 		display: flex;
 		flex-direction: column;
