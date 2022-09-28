@@ -124,7 +124,6 @@
 		width: 6rem;
 		text-align: center;
 	}
-	textarea:focus,
 	input:focus {
 		outline: none;
 	}
