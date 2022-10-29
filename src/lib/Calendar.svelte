@@ -1,26 +1,58 @@
 <script lang="ts">
-	export let selectedMonth: number;
-	export let selectedYear: number;
-	export let selectedDate: any;
-	export let selectedDay: number;
-	export let rows: any;
-	export let updateRows: any;
-	export let open: boolean;
 	import NepaliDate from 'nepali-date-converter';
+	import { onMount } from 'svelte';
 	import ShiftMonth from './ShiftMonth.svelte';
+	import { getFirstDayOfMonth, getNumberOfDays } from '$lib/utils';
+
+	export let dateFormat: string;
+	export let value: string; // YYYY/MM/DD is storing Format!
+	export let open: boolean;
+	export let restrictfuture: boolean;
+	export let selectedDate: string;
 
 	const arrDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+	const currentDay = new NepaliDate().getBS().date; // 1..31
 	const currentMonth = new NepaliDate().getBS().month + 1; // 1..12
 	const currentYear = new NepaliDate().getBS().year; // 2078...
-	const currentDay = new NepaliDate().getBS().date; // 1..31
-
-	function selectDate(y: any, m: any, d: any) {
-		selectedDay = d;
-		selectedDate = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
-		open = false;
-	}
+	let selectedDay: number = currentDay; // 1..31
+	let selectedMonth: number = currentMonth; // 1..12
+	let selectedYear: number = currentYear; // 2078...
 
 	$: inCurrentMonth = currentMonth === selectedMonth && currentYear === selectedYear;
+
+	let rows: any = [];
+
+	// life cycle
+	onMount(() => {
+		if (value) {
+			[selectedYear, selectedMonth, selectedDay] = value.split('/').map((str) => Number(str));
+			selectedDate = new NepaliDate(selectedYear, selectedMonth - 1, selectedDay).format(
+				dateFormat
+			);
+		} else {
+			value = new NepaliDate().format('YYYY/MM/DD');
+		}
+		updateRows();
+	});
+
+	function updateRows() {
+		const firstDay = getFirstDayOfMonth(selectedYear, selectedMonth); // '0 to 6 (Weeks)'
+		const numberOfDays = getNumberOfDays(selectedYear, selectedMonth); // 31
+		const previousMonthDays = new Array(firstDay).fill(0);
+		const currentMonthDays = Array.from({ length: numberOfDays }, (_, i) => i + 1);
+		const nextMonthDays = new Array(42 - (previousMonthDays.length + numberOfDays)).fill(0);
+		const daysArr = previousMonthDays.concat(currentMonthDays).concat(nextMonthDays);
+		const slices = [0, 7, 14, 21, 28, 35];
+		rows = slices.map((start) => daysArr.slice(start, start + 7));
+		rows = rows.filter((row: any) => row[0] > 0 || row[6] > 0);
+	}
+
+	function selectDate(y: number, m: number, d: number) {
+		selectedDay = d;
+		selectedDate = new NepaliDate(y, m - 1, d).format(dateFormat);
+		value = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
+		open = false;
+	}
 </script>
 
 <div class="main">
@@ -28,10 +60,10 @@
 		<span class="header-month">
 			{new NepaliDate(selectedYear, selectedMonth - 1, 1).format('MMMM YYYY')}
 		</span>
-		<ShiftMonth bind:selectedMonth bind:selectedYear {updateRows} />
+		<ShiftMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
 	</div>
 
-	<table class="w-full reset-this">
+	<table>
 		<thead>
 			<tr>
 				{#each arrDays as day}
@@ -80,6 +112,16 @@
 			{/each}
 		</tbody>
 	</table>
+
+	<div class="button-wrapper">
+		<button
+			class="select-today"
+			on:click={() => selectDate(currentYear, currentMonth, currentDay)}
+			type="button"
+		>
+			Select Today
+		</button>
+	</div>
 </div>
 
 <style>
@@ -88,9 +130,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		z-index: 20;
 		border: 1px solid rgb(218, 218, 218);
-		padding-left: 3px;
 	}
 	.header {
 		display: flex;
@@ -100,8 +140,7 @@
 	}
 	.header-month {
 		color: #1f2937;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+
 		font-weight: 700;
 	}
 
@@ -110,8 +149,6 @@
 	}
 	.text-day {
 		color: #1f2937;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
 		font-weight: 500;
 		text-align: center;
 		background-color: #ffffff;
@@ -120,8 +157,6 @@
 		display: flex;
 		background-color: #4338ca;
 		color: #ffffff;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
 		justify-content: center;
 		align-items: center;
 		width: 1.5rem;
@@ -137,5 +172,18 @@
 		width: 100%;
 		cursor: pointer;
 		padding: 8px;
+	}
+	.select-today {
+		background-color: #4338ca;
+		color: white;
+		padding: 0.25rem;
+		width: 97%;
+		margin: 0.25rem;
+	}
+	.button-wrapper {
+		width: 100%;
+	}
+	.select-today:hover {
+		background-color: #6b62c7;
 	}
 </style>

@@ -1,33 +1,23 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
+
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://github.com/sveltejs/svelte-preprocess
-	// for more information about preprocessors
-
+	// hydrate the <div id="svelte"> element in src/app.html
 	kit: {
-		adapter: adapter(),
-
-		// Override http methods in the Todo forms
-		methodOverride: {
-			allowed: ['PATCH', 'DELETE']
-		},
-		package: {
-			dir: 'nepali-date-picker'
-		},
-		vite: {
-			server: {
-				fs: {
-					allow: ['nepali-date-picker']
-				}
-			}
-		}
+		adapter: adapter()
+	},
+	package: {
+		source: 'src/lib',
+		dir: 'nepali-date-picker',
+		emitTypes: true,
+		// excludes all .d.ts and files starting with _ as the name
+		exports: (filepath) => !/^_|\/_|\.d\.ts$/.test(filepath),
+		files: () => true
 	},
 	preprocess: [
-		preprocess({
-			postcss: true
-		})
+		preprocess()
 	]
 };
 

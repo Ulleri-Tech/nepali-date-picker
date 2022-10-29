@@ -1,9 +1,12 @@
 <script lang="ts">
+	import NepaliDate from 'nepali-date-converter';
+	export let restrictfuture: boolean;
 	export let selectedMonth: number;
 	export let selectedYear: number;
 	export let updateRows: any;
 
 	function previousMonth() {
+		if (selectedYear < 2076 || (selectedMonth - 1 <= 0 && selectedYear - 1 < 2076)) return;
 		selectedMonth--;
 		if (selectedMonth <= 0) {
 			selectedMonth = 12;
@@ -11,8 +14,13 @@
 		}
 		updateRows();
 	}
-
 	function nextMonth() {
+		if (
+			selectedYear >= new NepaliDate().getBS().year &&
+			selectedMonth + 1 > new NepaliDate().getBS().month + 1 &&
+			restrictfuture
+		)
+			return;
 		selectedMonth++;
 		if (selectedMonth > 12) {
 			selectedMonth = 1;

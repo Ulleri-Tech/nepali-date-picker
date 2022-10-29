@@ -53,3 +53,24 @@ export const firstDayOfEachMonth = {
 	'2099': [1, 4, 0, 4, 0, 3, 6, 1, 2, 3, 5, 0],
 	'2100': [2, 5, 2, 5, 2, 4, 0, 2, 3, 5, 6, 1]
 };
+
+
+export function getFirstDayOfMonth(year: number, month: number): number {
+	let pairFound = Object.entries(firstDayOfEachMonth).find(([key]) => key === year.toString());
+	if (pairFound) {
+		return pairFound[1][month - 1];
+	} else {
+		console.log('Date Not Found!');
+		return 4;
+	}
+}
+export function getNumberOfDays(year: number, month: number): number {
+	let pairFound = Object.entries(numberOfDaysEachMonth).find(([key]) => key === year.toString());
+	if (pairFound) {
+		return pairFound[1][month - 1];
+	} else {
+		console.log('Date Not Found!');
+		return 31;
+	}
+}
+

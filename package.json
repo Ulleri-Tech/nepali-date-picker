@@ -1,6 +1,6 @@
 {
 	"name": "@ulleritech/nepali-date-picker",
-	"version": "0.0.14",
+	"version": "0.1.0",
 	"description": "Nepali Date Picker",
 	"author": {
 		"name": "Ulleri Tech",
@@ -11,36 +11,33 @@
 	"homepage": "https://github.com/Ulleri-Tech/nepali-date-picker",
 	"license": "MIT",
 	"scripts": {
-		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
-		"package": "svelte-kit package && npx tailwindcss -i ./src/app.css -o ./nepali-date-picker/style.css",
-		"preview": "svelte-kit preview",
-		"prepare": "svelte-kit sync",
+		"dev": "vite",
+		"build": "vite build",
+		"package": "svelte-package",
+		"preview": "vite preview",
+		"prepare": "vite sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/adapter-static": "^1.0.0-next.46",
+		"@sveltejs/kit": "1.0.0-next.528",
+		"@sveltejs/package": "^1.0.0-next.5",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
-		"autoprefixer": "^10.4.4",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"postcss": "^8.4.12",
-		"postcss-load-config": "^3.1.4",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
 		"svelte": "^3.46.0",
 		"svelte-check": "^2.7.1",
 		"svelte-preprocess": "^4.10.5",
 		"svelte2tsx": "^0.5.10",
-		"tailwindcss": "^3.0.23",
 		"tslib": "^2.3.1",
-		"typescript": "^4.7.2"
+		"typescript": "^4.8.4"
 	},
 	"type": "module",
 	"keywords": [
@@ -49,7 +46,6 @@
 		"BS-date-picker"
 	],
 	"dependencies": {
-		"@ulleritech/nepali-date-picker": "file:nepali-date-picker",
 		"nepali-date-converter": "^3.3.1"
 	}
 }
