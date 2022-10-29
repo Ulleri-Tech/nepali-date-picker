@@ -53,11 +53,17 @@
 		value = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
 		open = false;
 	}
+
+	function selectToday() {
+		selectedYear = currentYear;
+		selectedMonth = currentMonth;
+		selectDate(currentYear, currentMonth, currentDay);
+	}
 </script>
 
 <div class="main">
 	<div class="header">
-		<span class="header-month">
+		<span class="header-wrapper">
 			{new NepaliDate(selectedYear, selectedMonth - 1, 1).format('MMMM YYYY')}
 		</span>
 		<ShiftMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
@@ -82,7 +88,7 @@
 						<td>
 							<div class="month-days">
 								{#if i > 0}
-									{#if i === selectedDay}
+									{#if i === selectedDay && selectedMonth == parseInt(value.split('/')[1])}
 										<button
 											type="button"
 											on:click={() => {
@@ -114,11 +120,7 @@
 	</table>
 
 	<div class="button-wrapper">
-		<button
-			class="select-today"
-			on:click={() => selectDate(currentYear, currentMonth, currentDay)}
-			type="button"
-		>
+		<button class="select-today" on:click={() => selectToday()} type="button">
 			Select Today
 		</button>
 	</div>
@@ -129,6 +131,16 @@
 		margin: 0;
 		padding: 0;
 	}
+	button {
+		background: none;
+		color: inherit;
+		border: none;
+		padding: 0;
+		font: inherit;
+		cursor: pointer;
+		outline: inherit;
+	}
+
 	.main {
 		display: flex;
 		flex-direction: column;
@@ -138,6 +150,7 @@
 		font-weight: normal;
 		font-size: 0.875rem;
 		line-height: 1.25rem;
+		padding: 0.5rem;
 	}
 	.header {
 		display: flex;
@@ -145,10 +158,10 @@
 		padding: 0.5rem 0.5rem 0rem 0.5rem;
 		justify-content: space-between;
 	}
-	.header-month {
+	.header-wrapper {
 		color: #1f2937;
-
 		font-weight: 700;
+		padding: 0 0.5rem;
 	}
 
 	button {
@@ -183,14 +196,13 @@
 	.select-today {
 		background-color: #4338ca;
 		color: white;
-		padding: 0.25rem;
-		width: 97%;
-		margin: 0.25rem;
-	}
-	.button-wrapper {
 		width: 100%;
+		padding: 0.25rem 0;
 	}
 	.select-today:hover {
 		background-color: #6b62c7;
+	}
+	.button-wrapper {
+		width: 100%;
 	}
 </style>

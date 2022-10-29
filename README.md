@@ -17,7 +17,7 @@ How to Use
 import { NepaliDatePicker } from '@ulleritech/nepali-date-picker';
 </script>
 
-<NepaliDatePicker selectedDate="2079/06/30">
+<NepaliDatePicker value="2079/06/30"></NepaliDatePicker>
 ```
 
 ## Todo
