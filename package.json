@@ -1,6 +1,6 @@
 {
 	"name": "@ulleritech/nepali-date-picker",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Nepali Date Picker",
 	"author": {
 		"name": "Ulleri Tech",
@@ -12,10 +12,9 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": " build",
 		"package": "svelte-package",
 		"preview": "vite preview",
-		"prepare": "vite sync",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
