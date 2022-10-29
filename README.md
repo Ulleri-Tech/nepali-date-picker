@@ -20,4 +20,6 @@ import { NepaliDatePicker } from '@ulleritech/nepali-date-picker';
 <NepaliDatePicker value="2079/06/30"></NepaliDatePicker>
 ```
 
-## Todo
+## Svelte REPL
+
+[See in REPL](https://svelte.dev/repl/e4aa09eac08441218ffa0c3f743355dc?version=3.52.0)
