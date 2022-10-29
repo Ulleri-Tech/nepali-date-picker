@@ -19,5 +19,9 @@ jobs:
       - run: npm ci
       - run: npm run package
       - run: npm publish ./nepali-date-picker
+      - uses: 'marvinpinto/action-automatic-releases@latest'
+        with:
+          repo_token: '${{ secrets.GITHUB_TOKEN }}'
+          prerelease: false
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
