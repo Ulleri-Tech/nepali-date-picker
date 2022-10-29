@@ -79,6 +79,9 @@
 		margin-left: auto;
 		margin-right: auto;
 		gap: 0.25rem;
+		font-weight: normal;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
 	}
 
 	.dateInputText {

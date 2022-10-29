@@ -125,12 +125,19 @@
 </div>
 
 <style>
+	p {
+		margin: 0;
+		padding: 0;
+	}
 	.main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 		border: 1px solid rgb(218, 218, 218);
+		font-weight: normal;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
 	}
 	.header {
 		display: flex;
