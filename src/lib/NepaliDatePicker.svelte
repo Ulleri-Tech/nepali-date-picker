@@ -1,5 +1,5 @@
 <script lang="ts">
-	import './global.scss';
+	import './global.css';
 	import Calendar from './Calendar.svelte';
 	import { clickOutside } from '$lib/clickOutside';
 	export let dateformat = 'YYYY/MM/DD';
