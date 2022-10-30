@@ -54,7 +54,6 @@ export const firstDayOfEachMonth = {
 	'2100': [2, 5, 2, 5, 2, 4, 0, 2, 3, 5, 6, 1]
 };
 
-
 export function getFirstDayOfMonth(year: number, month: number): number {
 	let pairFound = Object.entries(firstDayOfEachMonth).find(([key]) => key === year.toString());
 	if (pairFound) {
@@ -73,4 +72,3 @@ export function getNumberOfDays(year: number, month: number): number {
 		return 31;
 	}
 }
-

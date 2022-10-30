@@ -1,20 +1,23 @@
 <script lang="ts">
-	import NepaliDate from 'nepali-date-converter';
+	import './global.scss';
 	import Calendar from './Calendar.svelte';
 	import { clickOutside } from '$lib/clickOutside';
-	export let dateFormat = 'YYYY/MM/DD';
-	export let hideLabel: boolean = false;
+	export let dateformat = 'YYYY/MM/DD';
+	export let hidelabel: boolean = false;
+	export let placeholder: string = 'YYYY/MM/DD';
 	export let label: string = 'Date';
 	export let restrictfuture: boolean = false;
 	export let value: string; // YYYY/MM/DD is storing Format!
 
 	let isOpenCalendar = false; // true: show calendar
-	let selectedDate: string = new NepaliDate().format(dateFormat);
+	let selectedDate: string;
 </script>
 
 <main>
 	<div class="date-container">
-		<label for="date" class="date-label" class:hidden={hideLabel}>{label}</label>
+		{#if !hidelabel}
+			<label for="date" class="date-label">{label}</label>
+		{/if}
 		<div
 			on:keydown={() => {
 				isOpenCalendar = !isOpenCalendar;
@@ -24,13 +27,7 @@
 			}}
 			class="date-select-box"
 		>
-			<input
-				placeholder="YYYY/MM/DD"
-				type="text"
-				bind:value={selectedDate}
-				disabled
-				class="dateInputText"
-			/>
+			<input {placeholder} type="text" bind:value={selectedDate} class="dateInputText" disabled />
 			<div class="date-icon">
 				<svg
 					width="14"
@@ -62,7 +59,7 @@
 					bind:value
 					bind:selectedDate
 					{restrictfuture}
-					{dateFormat}
+					{dateformat}
 				/>
 			</div>
 		</div>
@@ -71,17 +68,7 @@
 
 <style>
 	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		gap: 0.25rem;
-		font-weight: normal;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+		width: 140px;
 	}
 
 	.dateInputText {
@@ -109,9 +96,7 @@
 		align-items: center;
 		height: 2.25rem;
 		background-color: white;
-		outline-style: solid;
-		outline-width: 0.5px;
-		outline-color: #6b7280;
+		border: 0.5px solid #6b7280;
 	}
 	.date-icon {
 		padding-right: 0.75rem;
@@ -130,7 +115,7 @@
 
 	.calender {
 		position: absolute;
-		z-index: 1000;
+
 		left: 0;
 	}
 </style>

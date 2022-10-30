@@ -1,6 +1,6 @@
 {
 	"name": "@ulleritech/nepali-date-picker",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"description": "Nepali Date Picker",
 	"author": {
 		"name": "Ulleri Tech",
@@ -26,6 +26,7 @@
 		"@sveltejs/package": "^1.0.0-next.5",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
+		"autoprefixer": "^10.4.13",
 		"eslint": "^8.16.0",
 		"eslint-config-prettier": "^8.3.0",
 		"eslint-plugin-svelte3": "^4.0.0",
