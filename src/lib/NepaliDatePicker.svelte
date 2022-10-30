@@ -1,4 +1,5 @@
 <script lang="ts">
+	import './global.scss';
 	import NepaliDate from 'nepali-date-converter';
 	import Calendar from './Calendar.svelte';
 	import { clickOutside } from '$lib/clickOutside';
@@ -71,17 +72,7 @@
 
 <style>
 	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		gap: 0.25rem;
-		font-weight: normal;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
+		width: 140px;
 	}
 
 	.dateInputText {
@@ -109,9 +100,7 @@
 		align-items: center;
 		height: 2.25rem;
 		background-color: white;
-		outline-style: solid;
-		outline-width: 0.5px;
-		outline-color: #6b7280;
+		border: 0.5px solid #6b7280;
 	}
 	.date-icon {
 		padding-right: 0.75rem;

@@ -1,7 +1,6 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
 
-
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	// hydrate the <div id="svelte"> element in src/app.html
@@ -17,7 +16,9 @@ const config = {
 		files: () => true
 	},
 	preprocess: [
-		preprocess()
+		preprocess({
+			postcss: true
+		})
 	]
 };
 
