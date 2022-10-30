@@ -1,5 +1,4 @@
 <script lang="ts">
-	import './global.css';
 	import Calendar from './Calendar.svelte';
 	import { clickOutside } from '$lib/clickOutside';
 	export let dateformat = 'YYYY/MM/DD';
@@ -66,7 +65,74 @@
 	</div>
 </main>
 
-<style>
+<style lang="scss">
+	:global {
+		html {
+			box-sizing: border-box;
+			font-size: 16px;
+		}
+
+		*,
+		*:before,
+		*:after {
+			box-sizing: inherit;
+			margin: 0;
+			padding: 0;
+		}
+
+		button,
+		input[type='submit'],
+		input[type='reset'] {
+			background: none;
+			color: inherit;
+			border: none;
+			padding: 0;
+			font: inherit;
+			cursor: pointer;
+			outline: inherit;
+		}
+
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ol,
+		ul {
+			margin: 0;
+			padding: 0;
+			font-weight: normal;
+			font-size: 0.875rem;
+			line-height: 1.25rem;
+		}
+
+		ol,
+		ul {
+			list-style: none;
+		}
+
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+
+		table,
+		thead,
+		tbody,
+		tfoot,
+		tr,
+		th,
+		td {
+			margin: 0;
+			padding: 0;
+
+			-webkit-border-horizontal-spacing: 0;
+			-webkit-border-vertical-spacing: 0;
+		}
+	}
 	main {
 		width: 140px;
 	}
