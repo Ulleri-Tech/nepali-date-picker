@@ -4,7 +4,7 @@
 	import ShiftMonth from './ShiftMonth.svelte';
 	import { getFirstDayOfMonth, getNumberOfDays } from '$lib/utils';
 
-	export let dateFormat: string;
+	export let dateformat: string;
 	export let value: string; // YYYY/MM/DD is storing Format!
 	export let open: boolean;
 	export let restrictfuture: boolean;
@@ -27,7 +27,7 @@
 		if (value) {
 			[selectedYear, selectedMonth, selectedDay] = value.split('/').map((str) => Number(str));
 			selectedDate = new NepaliDate(selectedYear, selectedMonth - 1, selectedDay).format(
-				dateFormat
+				dateformat
 			);
 		} else {
 			value = new NepaliDate().format('YYYY/MM/DD');
@@ -49,7 +49,7 @@
 
 	function selectDate(y: number, m: number, d: number) {
 		selectedDay = d;
-		selectedDate = new NepaliDate(y, m - 1, d).format(dateFormat);
+		selectedDate = new NepaliDate(y, m - 1, d).format(dateformat);
 		value = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
 		open = false;
 	}
@@ -69,7 +69,7 @@
 		<ShiftMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
 	</div>
 
-	<table>
+	<table class="calender-body">
 		<thead>
 			<tr>
 				{#each arrDays as day}
@@ -127,18 +127,8 @@
 </div>
 
 <style>
-	p {
-		margin: 0;
-		padding: 0;
-	}
-	button {
-		background: none;
-		color: inherit;
-		border: none;
-		padding: 0;
-		font: inherit;
-		cursor: pointer;
-		outline: inherit;
+	.calender-body {
+		width: 240px;
 	}
 
 	.main {
@@ -146,6 +136,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		background-color: white;
 		border: 1px solid rgb(218, 218, 218);
 		font-weight: normal;
 		font-size: 0.875rem;

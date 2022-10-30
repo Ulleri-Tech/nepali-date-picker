@@ -1,21 +1,23 @@
 <script lang="ts">
 	import './global.scss';
-	import NepaliDate from 'nepali-date-converter';
 	import Calendar from './Calendar.svelte';
 	import { clickOutside } from '$lib/clickOutside';
-	export let dateFormat = 'YYYY/MM/DD';
-	export let hideLabel: boolean = false;
+	export let dateformat = 'YYYY/MM/DD';
+	export let hidelabel: boolean = false;
+	export let placeholder: string = 'YYYY/MM/DD';
 	export let label: string = 'Date';
 	export let restrictfuture: boolean = false;
 	export let value: string; // YYYY/MM/DD is storing Format!
 
 	let isOpenCalendar = false; // true: show calendar
-	let selectedDate: string = new NepaliDate().format(dateFormat);
+	let selectedDate: string;
 </script>
 
 <main>
 	<div class="date-container">
-		<label for="date" class="date-label" class:hidden={hideLabel}>{label}</label>
+		{#if !hidelabel}
+			<label for="date" class="date-label">{label}</label>
+		{/if}
 		<div
 			on:keydown={() => {
 				isOpenCalendar = !isOpenCalendar;
@@ -25,13 +27,7 @@
 			}}
 			class="date-select-box"
 		>
-			<input
-				placeholder="YYYY/MM/DD"
-				type="text"
-				bind:value={selectedDate}
-				disabled
-				class="dateInputText"
-			/>
+			<input {placeholder} type="text" bind:value={selectedDate} class="dateInputText" disabled />
 			<div class="date-icon">
 				<svg
 					width="14"
@@ -63,7 +59,7 @@
 					bind:value
 					bind:selectedDate
 					{restrictfuture}
-					{dateFormat}
+					{dateformat}
 				/>
 			</div>
 		</div>
@@ -119,7 +115,7 @@
 
 	.calender {
 		position: absolute;
-		z-index: 1000;
+
 		left: 0;
 	}
 </style>

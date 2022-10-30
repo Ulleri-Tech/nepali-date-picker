@@ -15,9 +15,11 @@ How to Use
 ```javascript
 <script>
 import { NepaliDatePicker } from '@ulleritech/nepali-date-picker';
+let dateBS="";
 </script>
 
 <NepaliDatePicker value="2079/06/30"></NepaliDatePicker>
+<NepaliDatePicker value={dateBS} hidelabel></NepaliDatePicker>
 ```
 
 ## Svelte REPL
