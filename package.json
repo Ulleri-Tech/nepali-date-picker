@@ -12,7 +12,8 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "vite",
-		"build": " build",
+		"build": " vite build",
+
 		"package": "svelte-package",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",

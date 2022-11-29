@@ -5,7 +5,10 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	// hydrate the <div id="svelte"> element in src/app.html
 	kit: {
-		adapter: adapter()
+		adapter: adapter({
+			fallback: '200.html'
+		}),
+		outDir: "dist",
 	},
 	package: {
 		source: 'src/lib',
