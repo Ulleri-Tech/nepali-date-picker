@@ -1,8 +1,0 @@
-.DS_Store
-node_modules
-/build
-/.svelte-kit
-/nepali-date-picker
-.env
-.env.*
-!.env.example
