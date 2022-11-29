@@ -13,7 +13,6 @@
 	"scripts": {
 		"dev": "vite",
 		"build": " vite build",
-
 		"package": "svelte-package",
 		"preview": "vite preview",
 		"check": "svelte-check --tsconfig ./tsconfig.json",

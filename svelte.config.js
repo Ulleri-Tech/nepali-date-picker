@@ -7,8 +7,7 @@ const config = {
 	kit: {
 		adapter: adapter({
 			fallback: '200.html'
-		}),
-		outDir: "dist",
+		})
 	},
 	package: {
 		source: 'src/lib',
