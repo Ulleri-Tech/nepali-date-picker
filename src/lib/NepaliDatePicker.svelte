@@ -81,8 +81,7 @@
 		}
 
 		button,
-		input[type='submit'],
-		input[type='reset'] {
+		input {
 			background: none;
 			color: inherit;
 			border: none;
@@ -170,9 +169,8 @@
 	}
 	input {
 		background-color: transparent;
-		border: 0px solid;
-		height: 1rem;
-		width: 6rem;
+		border: none;
+		height: 2rem;
 		text-align: center;
 	}
 	input:focus {
