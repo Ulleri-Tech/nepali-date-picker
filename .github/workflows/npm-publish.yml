@@ -3,6 +3,7 @@
 
 name: Publish Nepali Date Picker
 
+# Manually Release
 on:
   release:
     types: [created]
