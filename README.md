@@ -28,4 +28,4 @@ let dateBS="";
 
 ## Examples
 
-[See ]
+[See Demo Page](https://nepalidatepicker.netlify.app/)
