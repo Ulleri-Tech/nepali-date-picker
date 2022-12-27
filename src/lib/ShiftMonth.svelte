@@ -31,7 +31,7 @@
 </script>
 
 <div>
-	<button type="button" on:click={previousMonth} aria-label="calendar backward">
+	<button class="chevron" type="button" on:click={previousMonth} aria-label="calendar backward">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="icon icon-tabler icon-tabler-chevron-left"
@@ -49,7 +49,7 @@
 		</svg>
 	</button>
 
-	<button type="button" on:click={nextMonth} aria-label="calendar forward">
+	<button type="button" on:click={nextMonth} aria-label="calendar forward" class="chevron">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="icon icon-tabler icon-tabler-chevron-right"
@@ -67,3 +67,12 @@
 		</svg>
 	</button>
 </div>
+
+<style>
+	.chevron:hover {
+		color: gray;
+	}
+	.chevron:disabled {
+		color: gray;
+	}
+</style>

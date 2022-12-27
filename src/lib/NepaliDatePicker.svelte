@@ -90,7 +90,6 @@
 			margin: 0;
 			font: inherit;
 			cursor: pointer;
-			outline: inherit;
 		}
 
 		body,
@@ -148,7 +147,6 @@
 		display: flex;
 		flex-direction: column;
 		background-color: white;
-		gap: 0.25rem;
 	}
 	.date-label {
 		text-align: left;
@@ -158,12 +156,12 @@
 	}
 	.date-select-box {
 		display: flex;
-		padding-left: 0.25rem;
+
 		justify-content: center;
 		align-items: center;
-		height: 2.25rem;
+		height: 2.5rem;
 		background-color: white;
-		border: 0.5px solid #6b7280;
+		outline: 0.5px solid #6b7280;
 	}
 	.date-icon {
 		padding-right: 0.75rem;
