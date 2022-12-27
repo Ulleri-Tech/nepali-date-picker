@@ -142,11 +142,12 @@
 		font-size: 0.875rem;
 		line-height: 1.25rem;
 		padding: 0.5rem;
+		margin-top: 0.25rem;
 	}
 	.header {
 		display: flex;
 		width: 100%;
-		padding: 0.5rem 0.5rem 0rem 0.5rem;
+		padding: 0.5rem 0rem 0rem 0rem;
 		justify-content: space-between;
 	}
 	.header-wrapper {
