@@ -4,6 +4,7 @@
 	export let dateformat = 'YYYY/MM/DD';
 	export let hidelabel: boolean = false;
 	export let placeholder: string = 'YYYY/MM/DD';
+	export let zIndex: string = 'auto';
 	export let label: string = 'Date';
 	export let restrictfuture: boolean = false;
 	export let value: string; // YYYY/MM/DD is storing Format!
@@ -49,7 +50,7 @@
 			on:click_outside={() => {
 				isOpenCalendar = false;
 			}}
-			style="position:relative; width:100px;"
+			style="position:relative; width:100px; z-index: {zIndex}"
 			style:visibility={isOpenCalendar ? 'visible' : 'hidden'}
 		>
 			<div class="calender">
