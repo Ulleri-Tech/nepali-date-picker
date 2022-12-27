@@ -154,7 +154,7 @@
 		text-align: left;
 		margin-bottom: 0.5rem;
 		height: 1rem;
-		font-weight: 700;
+		font-weight: 600;
 	}
 	.date-select-box {
 		display: flex;
