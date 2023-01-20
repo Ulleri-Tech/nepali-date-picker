@@ -1,19 +1,20 @@
 <script lang="ts">
-	import NepaliDate from 'nepali-date-converter';
 	import { onMount } from 'svelte';
-	import ShiftMonth from './ShiftMonth.svelte';
-	import { getFirstDayOfMonth, getNumberOfDays } from '$lib/utils';
+	import ShiftAdMonth from './ShiftADMonth.svelte';
+	import { formatADdate, getFirstDayOfMonthAD, getNumberOfDaysAD } from '$lib/utils';
+	import type { DateFormat } from './types';
 
-	export let dateformat: string;
-	export let value: string; // YYYY/MM/DD is storing Format!
+	export let dateformat: DateFormat;
+	export let value: string; // YYYY-MM-DD is storing Format!
 	export let open: boolean;
 	export let restrictfuture: boolean;
 	export let selectedDate: string;
 
 	const arrDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-	const currentDay = new NepaliDate().getBS().date; // 1..31
-	const currentMonth = new NepaliDate().getBS().month + 1; // 1..12
-	const currentYear = new NepaliDate().getBS().year; // 2078...
+	const currentDay = new Date().getDate(); // 1..31
+	const currentMonth = new Date().getMonth() + 1; // 1..12
+	const currentYear = new Date().getFullYear(); // 2023...
+
 	let selectedDay: number = currentDay; // 1..31
 	let selectedMonth: number = currentMonth; // 1..12
 	let selectedYear: number = currentYear; // 2078...
@@ -25,19 +26,21 @@
 	// life cycle
 	onMount(() => {
 		if (value) {
-			[selectedYear, selectedMonth, selectedDay] = value.split('/').map((str) => Number(str));
-			selectedDate = new NepaliDate(selectedYear, selectedMonth - 1, selectedDay).format(
+			[selectedYear, selectedMonth, selectedDay] = value.split('-').map((str) => Number(str));
+
+			selectedDate = formatADdate(
+				new Date(selectedYear, selectedMonth - 1, selectedDay),
 				dateformat
 			);
 		} else {
-			value = new NepaliDate().format('YYYY/MM/DD');
+			value = formatADdate(new Date(), 'YYYY-MM-DD');
 		}
 		updateRows();
 	});
 
 	function updateRows() {
-		const firstDay = getFirstDayOfMonth(selectedYear, selectedMonth); // '0 to 6 (Weeks)'
-		const numberOfDays = getNumberOfDays(selectedYear, selectedMonth); // 31
+		const firstDay = getFirstDayOfMonthAD(selectedYear, selectedMonth); // '0 to 6 (Weeks)'
+		const numberOfDays = getNumberOfDaysAD(selectedYear, selectedMonth); // 31
 		const previousMonthDays = new Array(firstDay).fill(0);
 		const currentMonthDays = Array.from({ length: numberOfDays }, (_, i) => i + 1);
 		const nextMonthDays = new Array(42 - (previousMonthDays.length + numberOfDays)).fill(0);
@@ -49,8 +52,8 @@
 
 	function selectDate(y: number, m: number, d: number) {
 		selectedDay = d;
-		selectedDate = new NepaliDate(y, m - 1, d).format(dateformat);
-		value = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
+		selectedDate = formatADdate(new Date(y, m - 1, d), dateformat);
+		value = formatADdate(new Date(y, m - 1, d), 'YYYY-MM-DD');
 		open = false;
 	}
 
@@ -64,9 +67,12 @@
 <div class="main">
 	<div class="header">
 		<span class="header-wrapper">
-			{new NepaliDate(selectedYear, selectedMonth - 1, 1).format('MMMM YYYY')}
+			{new Date(selectedYear, selectedMonth - 1, 1).toLocaleString('en-ca', {
+				month: 'short',
+				year: 'numeric'
+			})}
 		</span>
-		<ShiftMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
+		<ShiftAdMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
 	</div>
 
 	<table class="calender-body">
@@ -88,7 +94,7 @@
 						<td>
 							<div class="month-days">
 								{#if i > 0}
-									{#if i === selectedDay && selectedMonth == parseInt(value.split('/')[1])}
+									{#if i === selectedDay && selectedMonth == parseInt(value.split('-')[1])}
 										<button
 											type="button"
 											on:click={() => {
