@@ -8,6 +8,8 @@ Svelte Component for Nepali Date Picker
 npm install @ulleritech/nepali-date-picker
 
 pnpm install @ulleritech/nepali-date-picker
+
+yarn add @ulleritech/nepali-date-picker
 ```
 
 ## Usage
