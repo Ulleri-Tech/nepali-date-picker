@@ -61,6 +61,7 @@
 		selectedYear = currentYear;
 		selectedMonth = currentMonth;
 		selectDate(currentYear, currentMonth, currentDay);
+		updateRows();
 	}
 </script>
 
