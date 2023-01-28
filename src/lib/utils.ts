@@ -1,3 +1,5 @@
+import type { DateFormat } from "./types";
+
 export const numberOfDaysEachMonth = {
 	'2076': [31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 30],
 	'2077': [31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
@@ -72,3 +74,26 @@ export function getNumberOfDays(year: number, month: number): number {
 		return 31;
 	}
 }
+
+
+export function formatADdate(date:Date, format: DateFormat):string{
+	if(format=='MM/DD/YYYY'){
+		return date.toLocaleDateString('en-US', {year: 'numeric', month: '2-digit', day: '2-digit'})
+	}else if (format=='YYYY/MM/DD'){
+		return  date.toLocaleDateString('en-ZA');
+	
+	}else if (format=='DD/MM/YYYY'){
+		return date.toLocaleDateString('en-GB')
+	}
+	else {
+		return date.toLocaleDateString('en-CA')
+	}
+}
+
+export function getFirstDayOfMonthAD(year:number, month:number):number {
+	return new Date(year, month-1, 1).getDay();
+  }
+
+  export function getNumberOfDaysAD(year:number, month:number):number {
+	return new Date(year, month, 0).getDate();
+  }

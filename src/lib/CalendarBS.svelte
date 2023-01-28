@@ -3,8 +3,9 @@
 	import { onMount } from 'svelte';
 	import ShiftMonth from './ShiftMonth.svelte';
 	import { getFirstDayOfMonth, getNumberOfDays } from '$lib/utils';
+	import type { DateFormat } from './types';
 
-	export let dateformat: string;
+	export let dateformat: DateFormat;
 	export let value: string; // YYYY/MM/DD is storing Format!
 	export let open: boolean;
 	export let restrictfuture: boolean;
@@ -58,6 +59,7 @@
 		selectedYear = currentYear;
 		selectedMonth = currentMonth;
 		selectDate(currentYear, currentMonth, currentDay);
+		updateRows();
 	}
 </script>
 

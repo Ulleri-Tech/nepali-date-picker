@@ -29,18 +29,21 @@
 		<p>6. Restrict Future Date</p>
 		<NepaliDatePicker restrictfuture value="2079/01/01" />
 	</li>
+	<li>
+		<p>7. AD Calendar Type</p>
+		<NepaliDatePicker calendarType="AD" value="2023-01-01" />
+	</li>
 </ul>
 
 <style>
 	.wrapper {
 		display: grid;
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: 1fr;
 		gap: 2rem;
 		width: 100%;
-		padding-left: 10rem;
-		padding-top: 2rem;
+		padding: 2rem;
 		justify-content: center;
-		align-items: start;
+		align-items: center;
 	}
 	p {
 		padding-bottom: 1rem;
@@ -52,5 +55,11 @@
 		margin: 1rem 0rem;
 		font-size: 2.25rem;
 		line-height: 2.5rem;
+	}
+
+	@media (min-width: 600px) {
+		.wrapper {
+			grid-template-columns: repeat(2, 1fr);
+		}
 	}
 </style>

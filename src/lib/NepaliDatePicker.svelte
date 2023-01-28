@@ -1,13 +1,16 @@
 <script lang="ts">
-	import Calendar from './Calendar.svelte';
+	import CalendarAD from './CalendarAD.svelte';
 	import { clickOutside } from '$lib/clickOutside';
-	export let dateformat = 'YYYY/MM/DD';
+	import type { DateFormat } from './types';
+	import CalendarBS from './CalendarBS.svelte';
+	export let dateformat: DateFormat = 'YYYY/MM/DD';
 	export let hidelabel: boolean = false;
 	export let placeholder: string = 'YYYY/MM/DD';
 	export let zIndex: string = 'auto';
 	export let label: string = 'Date';
 	export let restrictfuture: boolean = false;
 	export let value: string; // YYYY/MM/DD is storing Format!
+	export let calendarType: 'BS' | 'AD' = 'BS';
 
 	let isOpenCalendar = false; // true: show calendar
 	let selectedDate: string;
@@ -54,13 +57,23 @@
 			style:visibility={isOpenCalendar ? 'visible' : 'hidden'}
 		>
 			<div class="calender">
-				<Calendar
-					bind:open={isOpenCalendar}
-					bind:value
-					bind:selectedDate
-					{restrictfuture}
-					{dateformat}
-				/>
+				{#if calendarType == 'BS'}
+					<CalendarBS
+						bind:open={isOpenCalendar}
+						bind:value
+						bind:selectedDate
+						{restrictfuture}
+						{dateformat}
+					/>
+				{:else if calendarType == 'AD'}
+					<CalendarAD
+						bind:open={isOpenCalendar}
+						bind:value
+						bind:selectedDate
+						{restrictfuture}
+						{dateformat}
+					/>
+				{/if}
 			</div>
 		</div>
 	</div>
