@@ -69,7 +69,7 @@
 	<div class="header">
 		<span class="header-wrapper">
 			{new Date(selectedYear, selectedMonth - 1, 1).toLocaleString('en-ca', {
-				month: 'short',
+				month: 'long',
 				year: 'numeric'
 			})}
 		</span>
