@@ -6,6 +6,7 @@
 	export let updateRows: any;
 
 	function previousMonth() {
+		// Due to limitation of data
 		if (selectedYear < 2076 || (selectedMonth - 1 <= 0 && selectedYear - 1 < 2076)) return;
 		selectedMonth--;
 		if (selectedMonth <= 0) {
@@ -15,6 +16,8 @@
 		updateRows();
 	}
 	function nextMonth() {
+		// Due to limitation of data
+		if (selectedYear + 1 > 2099) return;
 		if (
 			selectedYear >= new NepaliDate().getBS().year &&
 			selectedMonth + 1 > new NepaliDate().getBS().month + 1 &&

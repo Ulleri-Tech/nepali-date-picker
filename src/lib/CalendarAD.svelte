@@ -41,10 +41,15 @@
 	function updateRows() {
 		const firstDay = getFirstDayOfMonthAD(selectedYear, selectedMonth); // '0 to 6 (Weeks)'
 		const numberOfDays = getNumberOfDaysAD(selectedYear, selectedMonth); // 31
-		const previousMonthDays = new Array(firstDay).fill(0);
+		const previousMonthDays = Array.from({ length: firstDay }, () => 0);
 		const currentMonthDays = Array.from({ length: numberOfDays }, (_, i) => i + 1);
-		const nextMonthDays = new Array(42 - (previousMonthDays.length + numberOfDays)).fill(0);
+		const nextMonthDays = Array.from(
+			{ length: 42 - (previousMonthDays.length + numberOfDays) },
+			() => 0
+		);
+
 		const daysArr = previousMonthDays.concat(currentMonthDays).concat(nextMonthDays);
+
 		const slices = [0, 7, 14, 21, 28, 35];
 		rows = slices.map((start) => daysArr.slice(start, start + 7));
 		rows = rows.filter((row: any) => row[0] > 0 || row[6] > 0);

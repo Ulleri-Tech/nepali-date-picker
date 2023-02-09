@@ -1,7 +1,7 @@
 <script lang="ts">
 	import NepaliDate from 'nepali-date-converter';
 	import { onMount } from 'svelte';
-	import ShiftMonth from './ShiftMonth.svelte';
+	import ShiftBSMonth from './ShiftBSMonth.svelte';
 	import { getFirstDayOfMonth, getNumberOfDays } from '$lib/utils';
 	import type { DateFormat } from './types';
 
@@ -20,7 +20,7 @@
 	let selectedYear: number = currentYear; // 2078...
 
 	$: inCurrentMonth = currentMonth === selectedMonth && currentYear === selectedYear;
-
+	let currentNumberOfDays = getNumberOfDays(selectedYear, selectedMonth);
 	let rows: any = [];
 
 	// life cycle
@@ -38,10 +38,23 @@
 
 	function updateRows() {
 		const firstDay = getFirstDayOfMonth(selectedYear, selectedMonth); // '0 to 6 (Weeks)'
-		const numberOfDays = getNumberOfDays(selectedYear, selectedMonth); // 31
-		const previousMonthDays = new Array(firstDay).fill(0);
-		const currentMonthDays = Array.from({ length: numberOfDays }, (_, i) => i + 1);
-		const nextMonthDays = new Array(42 - (previousMonthDays.length + numberOfDays)).fill(0);
+		currentNumberOfDays = getNumberOfDays(selectedYear, selectedMonth); // 31
+		const previousMonthNoOfDays =
+			selectedMonth == 1
+				? getNumberOfDays(selectedYear - 1, 12)
+				: getNumberOfDays(selectedYear, selectedMonth - 1);
+
+		const previousMonthDays = Array.from(
+			{ length: firstDay },
+			(_, i) => i + 1 - previousMonthNoOfDays
+		).reverse(); // days of previous months
+
+		const currentMonthDays = Array.from({ length: currentNumberOfDays }, (_, i) => i + 1);
+
+		const nextMonthDays = Array.from(
+			{ length: 42 - (previousMonthDays.length + currentNumberOfDays) },
+			(_, i) => currentNumberOfDays + (i + 1)
+		);
 		const daysArr = previousMonthDays.concat(currentMonthDays).concat(nextMonthDays);
 		const slices = [0, 7, 14, 21, 28, 35];
 		rows = slices.map((start) => daysArr.slice(start, start + 7));
@@ -50,9 +63,40 @@
 
 	function selectDate(y: number, m: number, d: number) {
 		selectedDay = d;
+
 		selectedDate = new NepaliDate(y, m - 1, d).format(dateformat);
 		value = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
 		open = false;
+	}
+
+	function selectPreviousDate(year: number, month: number, negD: number) {
+		const day = Math.abs(negD);
+
+		if (month == 1) {
+			selectDate(year - 1, 12, day);
+			selectedYear = year - 1;
+			selectedMonth = 12;
+		} else {
+			selectDate(year, month - 1, day);
+			selectedYear = year;
+			selectedMonth = month - 1;
+		}
+	}
+
+	function selectNextDate(year: number, month: number, D: number) {
+		// Due to limitation of data
+		if (year >= 2099) return;
+		const day = D + 1 - currentNumberOfDays;
+
+		if (month == 12) {
+			selectDate(year + 1, 1, day);
+			selectedYear = year + 1;
+			selectedMonth = 1;
+		} else {
+			selectDate(year, month + 1, day);
+			selectedYear = year;
+			selectedMonth = month + 1;
+		}
 	}
 
 	function selectToday() {
@@ -68,7 +112,7 @@
 		<span class="header-wrapper">
 			{new NepaliDate(selectedYear, selectedMonth - 1, 1).format('MMMM YYYY')}
 		</span>
-		<ShiftMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
+		<ShiftBSMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
 	</div>
 
 	<table class="calender-body">
@@ -89,7 +133,7 @@
 					{#each col as i}
 						<td>
 							<div class="month-days">
-								{#if i > 0}
+								{#if i > 0 && i < currentNumberOfDays}
 									{#if i === selectedDay && selectedMonth == parseInt(value.split('/')[1])}
 										<button
 											type="button"
@@ -102,6 +146,7 @@
 									{:else}
 										<p class="text-day">
 											<button
+												type="button"
 												style="border-style: none;"
 												style:font-weight={inCurrentMonth && currentDay === i ? '800' : '400'}
 												on:click={() => {
@@ -112,6 +157,20 @@
 											</button>
 										</p>
 									{/if}
+								{:else}
+									<p class="text-day">
+										<button
+											type="button"
+											style="border-style: none; color:gray;"
+											on:click={() => {
+												i < 0
+													? selectPreviousDate(selectedYear, selectedMonth, i)
+													: selectNextDate(selectedYear, selectedMonth, i);
+											}}
+										>
+											{i < 0 ? Math.abs(i) : i + 1 - currentNumberOfDays}
+										</button>
+									</p>
 								{/if}
 							</div>
 						</td>
