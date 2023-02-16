@@ -1,3 +1,5 @@
-import NepaliDatePicker from './NepaliDatePicker.svelte';
+import '../app.css';
+import NepaliDatePicker from './bs-picker/NepaliDatePicker.svelte';
+import DatePicker from './ad-picker/DatePicker.svelte';
 
-export { NepaliDatePicker };
+export { NepaliDatePicker, DatePicker };
