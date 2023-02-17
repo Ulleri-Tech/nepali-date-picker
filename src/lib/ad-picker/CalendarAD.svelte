@@ -11,7 +11,7 @@
 	import { shortDays, slices } from '$lib/common/constant';
 
 	export let dateformat: DateFormat;
-	export let value: string; // YYYY-MM-DD is storing Format!
+	export let value: string | Date; // YYYY-MM-DD is storing Format!
 	export let open: boolean;
 	export let restrictfuture: boolean;
 	export let selectedDate: string;
@@ -34,7 +34,9 @@
 		currentNumberOfDays = getNumberOfDaysAD(selectedYear, selectedMonth);
 
 		if (isValidDate(value)) {
-			[selectedYear, selectedMonth, selectedDay] = value.split('-').map((str) => Number(str));
+			selectedYear = new Date(value).getFullYear();
+			selectedMonth = new Date(value).getMonth() + 1;
+			selectedDay = new Date(value).getDate();
 			selectedDate = formatADdate(
 				new Date(selectedYear, selectedMonth - 1, selectedDay),
 				dateformat
@@ -140,50 +142,52 @@
 		<tbody>
 			{#each rows as col}
 				<tr>
-					{#each col as i}
-						<td>
-							<div class="month-days">
-								{#if i > 0 && i <= currentNumberOfDays}
-									{#if i === selectedDay && selectedMonth == parseInt(value.split('-')[1])}
-										<button
-											type="button"
-											on:click={() => {
-												selectDate(selectedYear, selectedMonth, i);
-											}}
-											class="selected-day"
-											class:font-extrabold={inCurrentMonth && currentDay === i}>{i}</button
-										>
-									{:else}
-										<p class="text-day">
+					{#if isValidDate(value)}
+						{#each col as i}
+							<td>
+								<div class="month-days">
+									{#if i > 0 && i <= currentNumberOfDays}
+										{#if i === selectedDay && selectedMonth == new Date(value).getMonth() + 1}
 											<button
-												style="border-style: none;"
-												style:font-weight={inCurrentMonth && currentDay === i ? '800' : '400'}
+												type="button"
 												on:click={() => {
 													selectDate(selectedYear, selectedMonth, i);
 												}}
+												class="selected-day"
+												class:font-extrabold={inCurrentMonth && currentDay === i}>{i}</button
 											>
-												{i}
+										{:else}
+											<p class="text-day">
+												<button
+													style="border-style: none;"
+													style:font-weight={inCurrentMonth && currentDay === i ? '800' : '400'}
+													on:click={() => {
+														selectDate(selectedYear, selectedMonth, i);
+													}}
+												>
+													{i}
+												</button>
+											</p>
+										{/if}
+									{:else}
+										<p class="text-day">
+											<button
+												type="button"
+												style="border-style: none; color:gray;"
+												on:click={() => {
+													i < 0
+														? selectPreviousDate(selectedYear, selectedMonth, i)
+														: selectNextDate(selectedYear, selectedMonth, i);
+												}}
+											>
+												{i < 0 ? Math.abs(i) : i - currentNumberOfDays}
 											</button>
 										</p>
 									{/if}
-								{:else}
-									<p class="text-day">
-										<button
-											type="button"
-											style="border-style: none; color:gray;"
-											on:click={() => {
-												i < 0
-													? selectPreviousDate(selectedYear, selectedMonth, i)
-													: selectNextDate(selectedYear, selectedMonth, i);
-											}}
-										>
-											{i < 0 ? Math.abs(i) : i - currentNumberOfDays}
-										</button>
-									</p>
-								{/if}
-							</div>
-						</td>
-					{/each}
+								</div>
+							</td>
+						{/each}
+					{/if}
 				</tr>
 			{/each}
 		</tbody>

@@ -41,7 +41,7 @@ export  function getNumberOfDaysAD(year: number, month: number): number {
 }
 
 
-export function isValidDate(d:string) {
+export function isValidDate(d:string | Date) {
 	let date= new Date(d)
 	
 	return  date instanceof Date && !isNaN(date.getTime());

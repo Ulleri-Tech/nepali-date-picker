@@ -8,7 +8,7 @@
 	export let zIndex: string = 'auto';
 	export let label: string = 'Date';
 	export let restrictfuture: boolean = false;
-	export let value: string; // YYYY/MM/DD is storing Format!
+	export let value: string | Date; // YYYY/MM/DD is storing Format!
 
 	let isOpenCalendar = false; // true: show calendar
 	let selectedDate: string;
