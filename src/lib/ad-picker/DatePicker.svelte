@@ -2,9 +2,9 @@
 	import CalendarAD from './CalendarAD.svelte';
 	import { clickOutside } from '$lib/common/clickOutside';
 	import type { DateFormat } from '../common/types';
-	export let dateformat: DateFormat = 'YYYY/MM/DD';
+	export let dateformat: DateFormat = 'YYYY-MM-DD';
 	export let hidelabel: boolean = false;
-	export let placeholder: string = 'YYYY/MM/DD';
+	export let placeholder: string = 'YYYY-MM-DD';
 	export let zIndex: string = 'auto';
 	export let label: string = 'Date';
 	export let restrictfuture: boolean = false;

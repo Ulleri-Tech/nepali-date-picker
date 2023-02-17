@@ -2,7 +2,7 @@
 	import NepaliDatePicker from '$lib/bs-picker/NepaliDatePicker.svelte';
 	import DatePicker from '$lib/ad-picker/DatePicker.svelte';
 	let dateBS: string;
-	let todayAD = new Date().toLocaleDateString('en-CA');
+	let todayAD = new Date();
 </script>
 
 <div
@@ -25,12 +25,12 @@
 		<li class="date-container">
 			<p>2. Without Label</p>
 			<span />
-			<NepaliDatePicker hidelabel value="2079/11/01" />
+			<NepaliDatePicker hidelabel value="2079-11-01" />
 
 			<div class="code">
 				<b>CODE</b>
 
-				<span class="html-span">{`<NepaliDatePicker hidelabel value="2079/11/01" />`}</span>
+				<span class="html-span">{`<NepaliDatePicker hidelabel value="2079-11-01" />`}</span>
 			</div>
 		</li>
 		<li class="date-container">
@@ -57,13 +57,13 @@
 		</li>
 		<li class="date-container">
 			<p>5. AD Calendar</p>
-			<DatePicker value={todayAD} />
+			<DatePicker value={todayAD} dateformat="MM-DD-YYYY" />
 			<div class="code">
 				<b>CODE</b>
 				<span class="script-span"
 					>{` import {DatePicker} from '@ulleritech/nepali-date-picker';`}</span
-				><span class="script-span">{`let todayAD = new Date().toLocaleDateString('en-CA');`}</span>
-				<span class="html-span">{`<DatePicker value={todayAD} />`}</span>
+				><span class="script-span">{`let todayAD = new Date();`}</span>
+				<span class="html-span">{`<DatePicker dateformat="MM-DD-YYYY" value={todayAD} />`}</span>
 			</div>
 		</li>
 	</ul>
