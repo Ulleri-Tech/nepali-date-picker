@@ -2,7 +2,7 @@
 	import NepaliDatePicker from '$lib/bs-picker/NepaliDatePicker.svelte';
 	import DatePicker from '$lib/ad-picker/DatePicker.svelte';
 	let dateBS: string;
-	let todayAD = new Date().toLocaleDateString('en-ca');
+	let todayAD = new Date().toLocaleDateString('en-CA');
 </script>
 
 <div
@@ -62,7 +62,7 @@
 				<b>CODE</b>
 				<span class="script-span"
 					>{` import {DatePicker} from '@ulleritech/nepali-date-picker';`}</span
-				><span class="script-span">{`let todayAD = new Date().toLocaleDateString('en-ca');`}</span>
+				><span class="script-span">{`let todayAD = new Date().toLocaleDateString('en-CA');`}</span>
 				<span class="html-span">{`<DatePicker value={todayAD} />`}</span>
 			</div>
 		</li>
