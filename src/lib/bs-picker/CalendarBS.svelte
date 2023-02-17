@@ -32,10 +32,11 @@
 			selectedDate = new NepaliDate(selectedYear, selectedMonth - 1, selectedDay).format(
 				dateformat
 			);
+			updateRows();
 		} else {
 			value = new NepaliDate().format('YYYY/MM/DD');
+			updateRows();
 		}
-		updateRows();
 	});
 
 	function updateRows() {

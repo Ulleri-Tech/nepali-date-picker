@@ -34,10 +34,11 @@
 				new Date(selectedYear, selectedMonth - 1, selectedDay),
 				dateformat
 			);
+			updateRows();
 		} else {
 			value = formatADdate(new Date(), 'YYYY-MM-DD');
+			updateRows();
 		}
-		updateRows();
 	});
 
 	function updateRows() {
