@@ -97,3 +97,9 @@ export function getFirstDayOfMonthAD(year:number, month:number):number {
   export function getNumberOfDaysAD(year:number, month:number):number {
 	return new Date(year, month, 0).getDate();
   }
+
+  export function isValidDate(d:string | Date) {
+	let date= new Date(d)
+
+	return  date instanceof Date && !isNaN(date.getTime());
+  }
