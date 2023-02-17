@@ -1,6 +1,7 @@
 <script lang="ts">
 	import NepaliDatePicker from '$lib/NepaliDatePicker.svelte';
 	let dateBS: string;
+	let dateAD = new Date().toLocaleDateString('en-ca');
 </script>
 
 <h1>Nepali Date Picker</h1>
@@ -31,7 +32,7 @@
 	</li>
 	<li>
 		<p>7. AD Calendar Type</p>
-		<NepaliDatePicker calendarType="AD" value="2023-01-01" />
+		<NepaliDatePicker calendarType="AD" value={dateAD} />
 	</li>
 </ul>
 
