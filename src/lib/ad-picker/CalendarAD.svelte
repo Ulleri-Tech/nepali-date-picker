@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import ShiftAdMonth from './ShiftADMonth.svelte';
+	import { shortDays, slices } from '$lib/common/constant';
+	import type { DateFormat } from '$lib/common/types';
 	import {
 		formatADdate,
 		getFirstDayOfMonthAD,
 		getNumberOfDaysAD,
 		isValidDate
 	} from '$lib/common/utils';
-	import type { DateFormat } from '../common/types';
-	import { shortDays, slices } from '$lib/common/constant';
+	import { onMount } from 'svelte';
+	import ShiftAdMonth from './ShiftADMonth.svelte';
 
 	export let dateformat: DateFormat;
 	export let value: string | Date; // YYYY-MM-DD is storing Format!
@@ -37,6 +37,7 @@
 			selectedYear = new Date(value).getFullYear();
 			selectedMonth = new Date(value).getMonth() + 1;
 			selectedDay = new Date(value).getDate();
+
 			selectedDate = formatADdate(
 				new Date(selectedYear, selectedMonth - 1, selectedDay),
 				dateformat
@@ -79,7 +80,6 @@
 		value = formatADdate(new Date(y, m - 1, d), 'YYYY-MM-DD');
 		open = false;
 	}
-
 	function selectPreviousDate(year: number, month: number, negD: number) {
 		const day = Math.abs(negD);
 		if (month == 1) {
