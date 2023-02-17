@@ -46,7 +46,7 @@
 
 		const previousMonthDays = Array.from(
 			{ length: firstDay },
-			(_, i) => i + 1 - previousMonthNoOfDays
+			(_, i) => i - previousMonthNoOfDays
 		).reverse(); // days of previous months
 
 		const currentMonthDays = Array.from({ length: currentNumberOfDays }, (_, i) => i + 1);
@@ -63,7 +63,6 @@
 
 	function selectDate(y: number, m: number, d: number) {
 		selectedDay = d;
-
 		selectedDate = new NepaliDate(y, m - 1, d).format(dateformat);
 		value = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
 		open = false;
@@ -71,7 +70,6 @@
 
 	function selectPreviousDate(year: number, month: number, negD: number) {
 		const day = Math.abs(negD);
-
 		if (month == 1) {
 			selectDate(year - 1, 12, day);
 			selectedYear = year - 1;
@@ -81,12 +79,13 @@
 			selectedYear = year;
 			selectedMonth = month - 1;
 		}
+		updateRows();
 	}
 
 	function selectNextDate(year: number, month: number, D: number) {
 		// Due to limitation of data
 		if (year >= 2099) return;
-		const day = D + 1 - currentNumberOfDays;
+		const day = D - currentNumberOfDays;
 
 		if (month == 12) {
 			selectDate(year + 1, 1, day);
@@ -97,6 +96,7 @@
 			selectedYear = year;
 			selectedMonth = month + 1;
 		}
+		updateRows();
 	}
 
 	function selectToday() {
@@ -133,7 +133,7 @@
 					{#each col as i}
 						<td>
 							<div class="month-days">
-								{#if i > 0 && i < currentNumberOfDays}
+								{#if i > 0 && i <= currentNumberOfDays}
 									{#if i === selectedDay && selectedMonth == parseInt(value.split('/')[1])}
 										<button
 											type="button"
@@ -168,7 +168,7 @@
 													: selectNextDate(selectedYear, selectedMonth, i);
 											}}
 										>
-											{i < 0 ? Math.abs(i) : i + 1 - currentNumberOfDays}
+											{i < 0 ? Math.abs(i) : i - currentNumberOfDays}
 										</button>
 									</p>
 								{/if}
