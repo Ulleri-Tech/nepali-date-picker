@@ -1,7 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import ShiftAdMonth from './ShiftADMonth.svelte';
-	import { formatADdate, getFirstDayOfMonthAD, getNumberOfDaysAD } from '$lib/common/utils';
+	import {
+		formatADdate,
+		getFirstDayOfMonthAD,
+		getNumberOfDaysAD,
+		isValidDate
+	} from '$lib/common/utils';
 	import type { DateFormat } from '../common/types';
 	import { shortDays, slices } from '$lib/common/constant';
 
@@ -25,29 +30,29 @@
 	let rows: any = [];
 
 	// life cycle
-	onMount(async () => {
-		currentNumberOfDays = await getNumberOfDaysAD(selectedYear, selectedMonth);
+	onMount(() => {
+		currentNumberOfDays = getNumberOfDaysAD(selectedYear, selectedMonth);
 
-		if (value) {
+		if (isValidDate(value)) {
 			[selectedYear, selectedMonth, selectedDay] = value.split('-').map((str) => Number(str));
-			selectedDate = await formatADdate(
+			selectedDate = formatADdate(
 				new Date(selectedYear, selectedMonth - 1, selectedDay),
 				dateformat
 			);
 		} else {
-			value = await formatADdate(new Date(), 'YYYY-MM-DD');
+			value = formatADdate(new Date(), 'YYYY-MM-DD');
 		}
-		await updateRows();
+		updateRows();
 	});
 
-	async function updateRows() {
-		const firstDay = await getFirstDayOfMonthAD(selectedYear, selectedMonth); // '0 to 6 (Weeks)'
-		currentNumberOfDays = await getNumberOfDaysAD(selectedYear, selectedMonth); // 31
+	function updateRows() {
+		const firstDay = getFirstDayOfMonthAD(selectedYear, selectedMonth); // '0 to 6 (Weeks)'
+		currentNumberOfDays = getNumberOfDaysAD(selectedYear, selectedMonth); // 31
 
 		const previousMonthNoOfDays =
 			selectedMonth == 1
-				? await getNumberOfDaysAD(selectedYear - 1, 12)
-				: await getNumberOfDaysAD(selectedYear, selectedMonth - 1); // 0 to 31
+				? getNumberOfDaysAD(selectedYear - 1, 12)
+				: getNumberOfDaysAD(selectedYear, selectedMonth - 1); // 0 to 31
 
 		const previousMonthDays = Array.from(
 			{ length: firstDay },
@@ -66,14 +71,14 @@
 		rows = rows.filter((row: any) => row[0] > 0 || row[6] > 0);
 	}
 
-	async function selectDate(y: number, m: number, d: number) {
+	function selectDate(y: number, m: number, d: number) {
 		selectedDay = d;
-		selectedDate = await formatADdate(new Date(y, m - 1, d), dateformat);
-		value = await formatADdate(new Date(y, m - 1, d), 'YYYY-MM-DD');
+		selectedDate = formatADdate(new Date(y, m - 1, d), dateformat);
+		value = formatADdate(new Date(y, m - 1, d), 'YYYY-MM-DD');
 		open = false;
 	}
 
-	async function selectPreviousDate(year: number, month: number, negD: number) {
+	function selectPreviousDate(year: number, month: number, negD: number) {
 		const day = Math.abs(negD);
 		if (month == 1) {
 			selectDate(year - 1, 12, day);
@@ -84,10 +89,10 @@
 			selectedYear = year;
 			selectedMonth = month - 1;
 		}
-		await updateRows();
+		updateRows();
 	}
 
-	async function selectNextDate(year: number, month: number, D: number) {
+	function selectNextDate(year: number, month: number, D: number) {
 		const day = D - currentNumberOfDays;
 		if (month == 12) {
 			selectDate(year + 1, 1, day);
@@ -98,14 +103,14 @@
 			selectedYear = year;
 			selectedMonth = month + 1;
 		}
-		await updateRows();
+		updateRows();
 	}
 
-	async function selectToday() {
+	function selectToday() {
 		selectedYear = currentYear;
 		selectedMonth = currentMonth;
-		await selectDate(currentYear, currentMonth, currentDay);
-		await updateRows();
+		selectDate(currentYear, currentMonth, currentDay);
+		updateRows();
 	}
 </script>
 
