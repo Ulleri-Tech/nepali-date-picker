@@ -20,7 +20,7 @@ export function getNumberOfDays(year: number, month: number): number {
 	}
 }
 
-export function formatADdate(date: Date, format: DateFormat): string {
+export async function formatADdate(date: Date, format: DateFormat): Promise<string> {
 	if (format == 'MM/DD/YYYY') {
 		return date.toLocaleDateString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit' });
 	} else if (format == 'YYYY/MM/DD') {
@@ -32,10 +32,10 @@ export function formatADdate(date: Date, format: DateFormat): string {
 	}
 }
 
-export function getFirstDayOfMonthAD(year: number, month: number): number {
+export async function getFirstDayOfMonthAD(year: number, month: number): Promise<number> {
 	return new Date(year, month - 1, 1).getDay();
 }
 
-export function getNumberOfDaysAD(year: number, month: number): number {
+export async function getNumberOfDaysAD(year: number, month: number): Promise<number> {
 	return new Date(year, month, 0).getDate();
 }

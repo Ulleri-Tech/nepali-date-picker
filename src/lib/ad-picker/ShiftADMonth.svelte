@@ -4,16 +4,16 @@
 	export let selectedYear: number;
 	export let updateRows: any;
 
-	function previousMonth() {
+	async function previousMonth() {
 		if (selectedYear < 1950 || (selectedMonth - 1 <= 0 && selectedYear - 1 < 1950)) return;
 		selectedMonth--;
 		if (selectedMonth <= 0) {
 			selectedMonth = 12;
 			selectedYear--;
 		}
-		updateRows();
+		await updateRows();
 	}
-	function nextMonth() {
+	async function nextMonth() {
 		if (
 			selectedYear >= new Date().getFullYear() &&
 			selectedMonth + 1 > new Date().getMonth() + 1 &&
@@ -25,7 +25,7 @@
 			selectedMonth = 1;
 			selectedYear++;
 		}
-		updateRows();
+		await updateRows();
 	}
 </script>
 
