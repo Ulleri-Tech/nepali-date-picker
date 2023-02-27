@@ -68,74 +68,71 @@
 </main>
 
 <style lang="scss">
-	:global {
-		*,
-		*:before,
-		*:after {
-			box-sizing: inherit;
-			margin: 0;
-			padding: 0;
-		}
+	*,
+	*:before,
+	*:after {
+		box-sizing: inherit;
+		margin: 0;
+		padding: 0;
+	}
 
-		button,
-		input {
-			background: none;
-			color: inherit;
-			border: none;
-			padding: 0;
-			margin: 0;
-			font: inherit;
-			cursor: pointer;
-		}
+	input {
+		background: none;
+		color: inherit;
+		border: none;
+		padding: 0;
+		margin: 0;
+		font: inherit;
+		cursor: pointer;
+	}
 
-		.calender {
-			position: absolute;
+	.calender {
+		position: absolute;
 
-			left: 0;
-		}
+		left: 0;
+	}
 
-		main {
-			width: 140px;
-		}
+	main {
+		width: 140px;
+	}
 
-		.dateInputText {
-			width: 100px;
-			background-color: white;
-			color: #161616;
-		}
+	.dateInputText {
+		width: 100px;
+		background-color: white;
+		color: #161616;
+	}
 
-		.date-container {
-			display: flex;
-			flex-direction: column;
-			background-color: white;
-		}
-		.date-label {
-			text-align: left;
-			margin-bottom: 0.5rem;
-			height: 1rem;
-			font-weight: 600;
-		}
-		.date-select-box {
-			display: flex;
+	.date-container {
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+	}
+	.date-label {
+		text-align: left;
+		margin-bottom: 0.5rem;
+		height: 1rem;
+		font-weight: 600;
+	}
+	.date-select-box {
+		display: flex;
 
-			justify-content: center;
-			align-items: center;
-			height: 2.5rem;
-			background-color: white;
-			outline: 0.5px solid #6b7280;
-		}
-		.date-icon {
-			padding-right: 0.75rem;
-			display: flex;
-		}
-		input {
-			background-color: transparent;
-			border: none;
-			height: 2rem;
-			text-align: center;
-		}
-		input:focus {
-			outline: none;
-		}
+		justify-content: center;
+		align-items: center;
+		height: 2.5rem;
+		background-color: white;
+		outline: 0.5px solid #6b7280;
+	}
+	.date-icon {
+		padding-right: 0.75rem;
+		display: flex;
+	}
+	input {
+		background-color: transparent;
+		border: none;
+		height: 2rem;
+		text-align: center;
+	}
+	input:focus {
+		outline: none;
 	}
 </style>

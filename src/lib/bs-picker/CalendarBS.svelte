@@ -209,7 +209,15 @@
 		padding: 0.5rem;
 		margin-top: 0.25rem;
 	}
-
+	button {
+		background-color: #ffffff;
+		color: inherit;
+		border: none;
+		padding: 0;
+		margin: 0;
+		font: inherit;
+		cursor: pointer;
+	}
 	.header {
 		display: flex;
 		width: 100%;
@@ -220,10 +228,6 @@
 		color: #1f2937;
 		font-weight: 700;
 		padding: 0 0.5rem;
-	}
-
-	button {
-		background-color: #ffffff;
 	}
 	.text-day {
 		color: #1f2937;

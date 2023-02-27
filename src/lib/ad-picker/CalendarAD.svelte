@@ -217,7 +217,15 @@
 		padding: 0.5rem;
 		margin-top: 0.25rem;
 	}
-
+	button {
+		background-color: #ffffff;
+		color: inherit;
+		border: none;
+		padding: 0;
+		margin: 0;
+		font: inherit;
+		cursor: pointer;
+	}
 	.header {
 		display: flex;
 		width: 100%;
@@ -229,14 +237,43 @@
 		font-weight: 700;
 		padding: 0 0.5rem;
 	}
-
-	button {
-		background-color: #ffffff;
-	}
 	.text-day {
 		color: #1f2937;
 		font-weight: 500;
 		text-align: center;
 		background-color: #ffffff;
+	}
+
+	.selected-day {
+		display: flex;
+		background-color: #4338ca;
+		color: #ffffff;
+		justify-content: center;
+		align-items: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 0.25rem;
+	}
+	.selected-day:hover {
+		background-color: #6366f1;
+	}
+	.month-days {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		cursor: pointer;
+		padding: 8px;
+	}
+	.select-today {
+		background-color: #4338ca;
+		color: white;
+		width: 100%;
+		padding: 0.25rem 0;
+	}
+	.select-today:hover {
+		background-color: #6b62c7;
+	}
+	.button-wrapper {
+		width: 100%;
 	}
 </style>
