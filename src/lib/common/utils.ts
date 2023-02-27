@@ -36,8 +36,9 @@ export function formatADdate(date: Date, format: DateFormat): string {
 			return `${month}-${day}-${year}`;
 		case 'DD-MM-YYYY':
 			return `${day}-${month}-${year}`;
+		case 'YYYY-MM-DD':
 		default:
-			return `${month}-${day}-${year}`;
+			return `${year}-${month}-${day}`;
 	}
 }
 
