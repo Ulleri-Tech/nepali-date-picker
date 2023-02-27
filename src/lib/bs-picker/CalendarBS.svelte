@@ -192,7 +192,7 @@
 	</div>
 </div>
 
-<style module>
+<style lang="scss">
 	.calender-body {
 		width: 240px;
 	}
