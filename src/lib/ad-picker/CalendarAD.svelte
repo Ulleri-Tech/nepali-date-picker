@@ -200,7 +200,7 @@
 	</div>
 </div>
 
-<style lang="scss">
+<style>
 	.calender-body {
 		width: 240px;
 	}

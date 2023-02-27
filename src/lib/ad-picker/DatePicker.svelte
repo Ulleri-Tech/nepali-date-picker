@@ -68,43 +68,73 @@
 </main>
 
 <style lang="scss">
-	*,
-	*:before,
-	*:after {
-		box-sizing: inherit;
-		margin: 0;
-		padding: 0;
+	:global {
+		html {
+			box-sizing: border-box;
+			font-size: 16px;
+		}
+		*,
+		*:before,
+		*:after {
+			box-sizing: inherit;
+			margin: 0;
+			padding: 0;
+		}
+		button,
+		input {
+			background: none;
+			color: inherit;
+			border: none;
+			padding: 0;
+			margin: 0;
+			font: inherit;
+			cursor: pointer;
+		}
+		body,
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p,
+		ol,
+		ul {
+			margin: 0;
+			padding: 0;
+			font-weight: normal;
+			font-size: 0.875rem;
+			line-height: 1.25rem;
+		}
+		ol,
+		ul {
+			list-style: none;
+		}
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+		table,
+		thead,
+		tbody,
+		tfoot,
+		tr,
+		th,
+		td {
+			margin: 0;
+			padding: 0;
+			-webkit-border-horizontal-spacing: 0;
+			-webkit-border-vertical-spacing: 0;
+		}
 	}
-
-	input {
-		background: none;
-		color: inherit;
-		border: none;
-		padding: 0;
-		margin: 0;
-		font: inherit;
-		cursor: pointer;
-		font-weight: normal;
-		font-size: 0.875rem;
-		line-height: 1.25rem;
-	}
-
-	.calender {
-		position: absolute;
-
-		left: 0;
-	}
-
 	main {
 		width: 140px;
 	}
-
 	.dateInputText {
 		width: 100px;
 		background-color: white;
 		color: #161616;
 	}
-
 	.date-container {
 		display: flex;
 		flex-direction: column;
@@ -118,7 +148,6 @@
 	}
 	.date-select-box {
 		display: flex;
-
 		justify-content: center;
 		align-items: center;
 		height: 2.5rem;
@@ -137,5 +166,9 @@
 	}
 	input:focus {
 		outline: none;
+	}
+	.calender {
+		position: absolute;
+		left: 0;
 	}
 </style>
