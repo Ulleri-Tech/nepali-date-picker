@@ -83,6 +83,9 @@
 		margin: 0;
 		font: inherit;
 		cursor: pointer;
+		font-weight: normal;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
 	}
 
 	.calender {
