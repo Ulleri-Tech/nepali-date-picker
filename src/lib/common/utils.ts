@@ -3,7 +3,7 @@ import { firstDayOfEachMonth, numberOfDaysEachMonth } from './constant';
 import type { DateFormat } from './types';
 
 export function getFirstDayOfMonth(year: number, month: number): number {
-	let pairFound = Object.entries(firstDayOfEachMonth).find(([key]) => key === year.toString());
+	const pairFound = Object.entries(firstDayOfEachMonth).find(([key]) => key === year.toString());
 	if (pairFound) {
 		return pairFound[1][month - 1];
 	} else {
@@ -12,7 +12,7 @@ export function getFirstDayOfMonth(year: number, month: number): number {
 	}
 }
 export function getNumberOfDays(year: number, month: number): number {
-	let pairFound = Object.entries(numberOfDaysEachMonth).find(([key]) => key === year.toString());
+	const pairFound = Object.entries(numberOfDaysEachMonth).find(([key]) => key === year.toString());
 	if (pairFound) {
 		return pairFound[1][month - 1];
 	} else {
@@ -50,7 +50,7 @@ export function getNumberOfDaysAD(year: number, month: number): number {
 }
 
 export function isValidDate(d: string | Date) {
-	let date = new Date(d);
+	const date = new Date(d);
 
 	return date instanceof Date && !isNaN(date.getTime());
 }

@@ -3,11 +3,11 @@
 	import { clickOutside } from '$lib/common/clickOutside';
 	import type { DateFormat } from '../common/types';
 	export let dateformat: DateFormat = 'YYYY-MM-DD';
-	export let hidelabel: boolean = false;
-	export let placeholder: string = 'YYYY-MM-DD';
-	export let zIndex: string = 'auto';
-	export let label: string = 'Date';
-	export let restrictfuture: boolean = false;
+	export let hidelabel = false;
+	export let placeholder = 'YYYY-MM-DD';
+	export let zIndex = 'auto';
+	export let label = 'Date';
+	export let restrictfuture = false;
 	export let value: string | Date; // YYYY/MM/DD is storing Format!
 
 	let isOpenCalendar = false; // true: show calendar
@@ -66,3 +66,65 @@
 		</div>
 	</div>
 </main>
+
+<style module>
+	input {
+		background: none;
+		color: inherit;
+		border: none;
+		padding: 0;
+		margin: 0;
+		font: inherit;
+		cursor: pointer;
+	}
+
+	.calender {
+		position: absolute;
+
+		left: 0;
+	}
+
+	main {
+		width: 140px;
+	}
+
+	.dateInputText {
+		width: 100px;
+		background-color: white;
+		color: #161616;
+	}
+
+	.date-container {
+		display: flex;
+		flex-direction: column;
+		background-color: white;
+	}
+	.date-label {
+		text-align: left;
+		margin-bottom: 0.5rem;
+		height: 1rem;
+		font-weight: 600;
+	}
+	.date-select-box {
+		display: flex;
+
+		justify-content: center;
+		align-items: center;
+		height: 2.5rem;
+		background-color: white;
+		outline: 0.5px solid #6b7280;
+	}
+	.date-icon {
+		padding-right: 0.75rem;
+		display: flex;
+	}
+	input {
+		background-color: transparent;
+		border: none;
+		height: 2rem;
+		text-align: center;
+	}
+	input:focus {
+		outline: none;
+	}
+</style>

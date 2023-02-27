@@ -199,3 +199,44 @@
 		</button>
 	</div>
 </div>
+
+<style module>
+	.calender-body {
+		width: 240px;
+	}
+	.main {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color: white;
+		border: 1px solid rgb(218, 218, 218);
+		font-weight: normal;
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+		padding: 0.5rem;
+		margin-top: 0.25rem;
+	}
+
+	.header {
+		display: flex;
+		width: 100%;
+		padding: 0.5rem 0rem 0rem 0rem;
+		justify-content: space-between;
+	}
+	.header-wrapper {
+		color: #1f2937;
+		font-weight: 700;
+		padding: 0 0.5rem;
+	}
+
+	button {
+		background-color: #ffffff;
+	}
+	.text-day {
+		color: #1f2937;
+		font-weight: 500;
+		text-align: center;
+		background-color: #ffffff;
+	}
+</style>
