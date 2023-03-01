@@ -18,18 +18,24 @@
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
-		"format": "prettier --write --plugin-search-dir=. ."
+		"format": "prettier --write --plugin-search-dir=. .",
+		"test": "vitest",
+		"coverage": "vitest run --coverage"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^1.0.0-next.46",
 		"@sveltejs/kit": "1.0.0-next.528",
 		"@sveltejs/package": "^1.0.0-next.5",
+		"@testing-library/svelte": "^3.2.2",
 		"@typescript-eslint/eslint-plugin": "^5.54.0",
 		"@typescript-eslint/parser": "^5.54.0",
+		"@vitest/coverage-c8": "^0.29.2",
 		"autoprefixer": "^10.4.13",
 		"eslint": "^8.35.0",
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-plugin-svelte3": "^4.0.0",
+		"jest-dom": "^4.0.0",
+		"jsdom": "^21.1.0",
 		"prettier": "^2.8.4",
 		"prettier-plugin-svelte": "^2.9.0",
 		"svelte": "^3.55.1",
@@ -37,7 +43,8 @@
 		"svelte-preprocess": "^5.0.1",
 		"svelte2tsx": "^0.6.2",
 		"tslib": "^2.5.0",
-		"typescript": "^4.9.5"
+		"typescript": "^4.9.5",
+		"vitest": "^0.29.2"
 	},
 	"type": "module",
 	"keywords": [
