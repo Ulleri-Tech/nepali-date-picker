@@ -30,7 +30,12 @@
 </script>
 
 <div>
-	<button class="chevron" type="button" on:click={previousMonth} aria-label="calendar backward">
+	<button
+		class="ut--button--chevron"
+		type="button"
+		on:click={previousMonth}
+		aria-label="calendar backward"
+	>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			class="icon icon-tabler icon-tabler-chevron-left"
@@ -68,10 +73,10 @@
 </div>
 
 <style>
-	.chevron:hover {
+	.ut--button--chevron:hover {
 		color: gray;
 	}
-	.chevron:disabled {
+	.ut--button--chevron:disabled {
 		color: gray;
 	}
 </style>

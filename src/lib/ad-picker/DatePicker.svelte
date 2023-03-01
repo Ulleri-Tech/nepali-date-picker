@@ -14,10 +14,10 @@
 	let selectedDate: string;
 </script>
 
-<main>
-	<div class="date-container">
+<main class="ut---main">
+	<div class="ut--date-container">
 		{#if !hidelabel}
-			<label for="date" class="date-label">{label}</label>
+			<label for="date" class="ut--date-label">{label}</label>
 		{/if}
 		<div
 			on:keydown={() => {
@@ -26,10 +26,16 @@
 			on:click={() => {
 				isOpenCalendar = !isOpenCalendar;
 			}}
-			class="date-select-box"
+			class="ut--date-select-box"
 		>
-			<input {placeholder} type="text" bind:value={selectedDate} class="dateInputText" disabled />
-			<div class="date-icon">
+			<input
+				{placeholder}
+				type="text"
+				bind:value={selectedDate}
+				class="ut--dateInputText"
+				disabled
+			/>
+			<div class="ut--date-icon">
 				<svg
 					width="14"
 					height="20"
@@ -54,7 +60,7 @@
 			style="position:relative; width:100px; z-index: {zIndex}"
 			style:visibility={isOpenCalendar ? 'visible' : 'hidden'}
 		>
-			<div class="calender">
+			<div class="ut--calender">
 				<CalendarAD
 					bind:open={isOpenCalendar}
 					bind:value
@@ -127,47 +133,49 @@
 			-webkit-border-vertical-spacing: 0;
 		}
 	}
-	main {
+	.ut---main {
 		width: 140px;
 	}
-	.dateInputText {
+	.ut--dateInputText {
 		width: 100px;
 		background-color: white;
 		color: #161616;
+		height: 2rem;
+		text-align: center;
 	}
-	.date-container {
+
+	.ut--dateInputText:focus {
+		outline: none;
+	}
+	.ut--dateInputText:disabled {
+		color: #161616;
+	}
+	.ut--date-container {
 		display: flex;
 		flex-direction: column;
 		background-color: white;
 	}
-	.date-label {
+	.ut--date-label {
 		text-align: left;
 		margin-bottom: 0.5rem;
 		height: 1rem;
 		font-weight: 600;
 	}
-	.date-select-box {
+	.ut--date-select-box {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		height: 2.5rem;
 		background-color: white;
 		outline: 0.5px solid #6b7280;
+		outline-offset: -2px;
 	}
-	.date-icon {
+	.ut--date-icon {
 		padding-right: 0.75rem;
 		display: flex;
 	}
-	input {
-		background-color: transparent;
-		border: none;
-		height: 2rem;
-		text-align: center;
-	}
-	input:focus {
-		outline: none;
-	}
-	.calender {
+
+	.ut--calender {
 		position: absolute;
 		left: 0;
 	}

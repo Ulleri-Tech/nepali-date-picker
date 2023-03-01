@@ -110,20 +110,20 @@
 	}
 </script>
 
-<div class="main">
-	<div class="header">
-		<span class="header-wrapper">
+<div class="ut--div--main">
+	<div class="ut--header">
+		<span class="ut--header-wrapper">
 			{new NepaliDate(selectedYear, selectedMonth - 1, 1).format('MMMM YYYY')}
 		</span>
 		<ShiftBSMonth {restrictfuture} bind:selectedMonth bind:selectedYear {updateRows} />
 	</div>
 
-	<table class="calender-body">
+	<table class="ut--calender-body">
 		<thead>
 			<tr>
 				{#each shortDays as day}
 					<th>
-						<div class="text-day">
+						<div class="ut--p--text-day">
 							{day}
 						</div>
 					</th>
@@ -136,7 +136,7 @@
 					{#if isValidDateBS(value)}
 						{#each col as i}
 							<td>
-								<div class="month-days">
+								<div class="ut--div--month-days">
 									{#if i > 0 && i <= currentNumberOfDays}
 										{#if i === selectedDay && selectedMonth == parseInt(value.split(/[-/]/)[1])}
 											<button
@@ -144,13 +144,14 @@
 												on:click={() => {
 													selectDate(selectedYear, selectedMonth, i);
 												}}
-												class="selected-day"
+												class="ut--button--selected-day ut--button--basic"
 												class:font-extrabold={inCurrentMonth && currentDay === i}>{i}</button
 											>
 										{:else}
-											<p class="text-day">
+											<p class="ut--p--text-day">
 												<button
 													type="button"
+													class="ut--button--basic"
 													style="border-style: none;"
 													style:font-weight={inCurrentMonth && currentDay === i ? '800' : '400'}
 													on:click={() => {
@@ -162,9 +163,10 @@
 											</p>
 										{/if}
 									{:else}
-										<p class="text-day">
+										<p class="ut--p--text-day">
 											<button
 												type="button"
+												class="ut--button--basic"
 												style="border-style: none; color:gray;"
 												on:click={() => {
 													i < 0
@@ -185,18 +187,18 @@
 		</tbody>
 	</table>
 
-	<div class="button-wrapper">
-		<button class="select-today" on:click={() => selectToday()} type="button">
+	<div style="width:100%">
+		<button class="ut--button--select-today" on:click={() => selectToday()} type="button">
 			Select Today
 		</button>
 	</div>
 </div>
 
 <style>
-	.calender-body {
+	.ut--calender-body {
 		width: 240px;
 	}
-	.main {
+	.ut--div--main {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -209,7 +211,7 @@
 		padding: 0.5rem;
 		margin-top: 0.25rem;
 	}
-	button {
+	.ut--button--basic {
 		background-color: #ffffff;
 		color: inherit;
 		border: none;
@@ -218,25 +220,25 @@
 		font: inherit;
 		cursor: pointer;
 	}
-	.header {
+	.ut--header {
 		display: flex;
 		width: 100%;
 		padding: 0.5rem 0rem 0rem 0rem;
 		justify-content: space-between;
 	}
-	.header-wrapper {
+	.ut--header-wrapper {
 		color: #1f2937;
 		font-weight: 700;
 		padding: 0 0.5rem;
 	}
-	.text-day {
+	.ut--p--text-day {
 		color: #1f2937;
 		font-weight: 500;
 		text-align: center;
 		background-color: #ffffff;
 	}
 
-	.selected-day {
+	.ut--button--selected-day {
 		display: flex;
 		background-color: #4338ca;
 		color: #ffffff;
@@ -246,26 +248,23 @@
 		height: 1.5rem;
 		border-radius: 0.25rem;
 	}
-	.selected-day:hover {
+	.ut--button--selected-day:hover {
 		background-color: #6366f1;
 	}
-	.month-days {
+	.ut--div--month-days {
 		display: flex;
 		justify-content: center;
 		width: 100%;
 		cursor: pointer;
 		padding: 8px;
 	}
-	.select-today {
+	.ut--button--select-today {
 		background-color: #4338ca;
 		color: white;
 		width: 100%;
 		padding: 0.25rem 0;
 	}
-	.select-today:hover {
+	.ut--button--select-today:hover {
 		background-color: #6b62c7;
-	}
-	.button-wrapper {
-		width: 100%;
 	}
 </style>
