@@ -1,6 +1,6 @@
 {
 	"name": "@ulleritech/nepali-date-picker",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"description": "Nepali Date Picker",
 	"author": {
 		"name": "Ulleri Tech",
@@ -15,6 +15,12 @@
 	],
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"svelte": "./dist/index.js"
+		}
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": " vite build",
@@ -26,6 +32,9 @@
 		"format": "prettier --write --plugin-search-dir=. .",
 		"test": "vitest",
 		"coverage": "vitest run --coverage"
+	},
+	"peerDependencies": {
+		"svelte": "^3.55.1"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-static": "^2.0.1",
@@ -59,7 +68,6 @@
 		"BS-date-picker"
 	],
 	"dependencies": {
-		"nepali-date-converter": "^3.3.1",
-		"svelte": "^3.55.1"
+		"nepali-date-converter": "^3.3.1"
 	}
 }
