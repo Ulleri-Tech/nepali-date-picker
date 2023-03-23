@@ -69,7 +69,6 @@ export function isValidDateBS(inputDate: string): boolean {
 		}
 		try {
 			const date = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
-			console.log('Valid Date', date);
 			return true;
 		} catch (e) {
 			console.log('Invalid Date');

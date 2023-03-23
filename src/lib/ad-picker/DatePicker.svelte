@@ -2,6 +2,7 @@
 	import CalendarAD from './CalendarAD.svelte';
 	import { clickOutside } from '$lib/common/clickOutside';
 	import type { DateFormat } from '../common/types';
+	import { createEventDispatcher } from 'svelte';
 	export let dateformat: DateFormat = 'YYYY-MM-DD';
 	export let hidelabel = false;
 	export let placeholder = 'YYYY-MM-DD';
@@ -10,8 +11,12 @@
 	export let restrictfuture = false;
 	export let value: string | Date; // YYYY/MM/DD is storing Format!
 
+	const dispatch = createEventDispatcher();
+
 	let isOpenCalendar = false; // true: show calendar
 	let selectedDate: string;
+
+	$: selectedDate && dispatch('change');
 </script>
 
 <main class="ut---main">

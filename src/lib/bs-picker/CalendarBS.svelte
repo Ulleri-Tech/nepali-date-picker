@@ -151,7 +151,7 @@
 											<p class="ut--p--text-day">
 												<button
 													type="button"
-													class="ut--button--basic"
+													class="ut--button--basic ut--button--unselected-day"
 													style="border-style: none;"
 													style:font-weight={inCurrentMonth && currentDay === i ? '800' : '400'}
 													on:click={() => {
@@ -166,7 +166,7 @@
 										<p class="ut--p--text-day">
 											<button
 												type="button"
-												class="ut--button--basic"
+												class="ut--button--basic ut--button--unselected-day"
 												style="border-style: none; color:gray;"
 												on:click={() => {
 													i < 0
@@ -236,6 +236,15 @@
 		font-weight: 500;
 		text-align: center;
 		background-color: #ffffff;
+	}
+
+	.ut--button--unselected-day {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1.25rem;
+		height: 1.25rem;
+		border-radius: 0.25rem;
 	}
 
 	.ut--button--selected-day {
