@@ -1,10 +1,10 @@
 <script lang="ts">
-	import NepaliDate from 'nepali-date-converter';
 	import { onMount } from 'svelte';
 	import ShiftBSMonth from './ShiftBSMonth.svelte';
 	import { getFirstDayOfMonth, getNumberOfDays, isValidDateBS } from '$lib/common/utils';
 	import type { DateFormat } from '../common/types';
 	import { shortDays, slices } from '$lib/common/constant';
+	import NepaliDate from '$lib/packages/nepali-date-converter';
 
 	export let dateformat: DateFormat;
 	export let value: string; // YYYY/MM/DD or YYYY-MM-DD is storing Format!

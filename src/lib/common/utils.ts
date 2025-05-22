@@ -1,4 +1,5 @@
-import NepaliDate from 'nepali-date-converter';
+import NepaliDate from '../packages/nepali-date-converter';
+
 import { firstDayOfEachMonth, numberOfDaysEachMonth } from './constant';
 import type { DateFormat } from './types';
 
@@ -68,7 +69,7 @@ export function isValidDateBS(inputDate: string): boolean {
 			return false;
 		}
 		try {
-			const date = new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
+			new NepaliDate(y, m - 1, d).format('YYYY/MM/DD');
 			return true;
 		} catch (e) {
 			console.log('Invalid Date');
