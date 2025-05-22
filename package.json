@@ -1,6 +1,6 @@
 {
 	"name": "@ulleritech/nepali-date-picker",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"description": "Nepali Date Picker",
 	"author": {
 		"name": "Ulleri Tech",
@@ -34,32 +34,32 @@
 		"coverage": "vitest run --coverage"
 	},
 	"peerDependencies": {
-		"svelte": "^3.55.1"
+		"svelte": "^3.59.2"
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^2.0.1",
-		"@sveltejs/kit": "^1.9.1",
-		"@sveltejs/package": "^2.0.2",
+		"@sveltejs/adapter-static": "^2.0.3",
+		"@sveltejs/kit": "^1.30.4",
+		"@sveltejs/package": "^2.3.11",
+		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/svelte": "^3.2.2",
-		"@testing-library/jest-dom": "^5.16.5",
-		"@typescript-eslint/eslint-plugin": "^5.54.0",
-		"@typescript-eslint/parser": "^5.54.0",
-		"@vitest/coverage-c8": "^0.29.2",
-		"autoprefixer": "^10.4.13",
-		"eslint": "^8.35.0",
-		"eslint-config-prettier": "^8.6.0",
+		"@typescript-eslint/eslint-plugin": "^5.62.0",
+		"@typescript-eslint/parser": "^5.62.0",
+		"@vitest/coverage-c8": "^0.29.8",
+		"autoprefixer": "^10.4.21",
+		"eslint": "^8.57.1",
+		"eslint-config-prettier": "^8.10.0",
 		"eslint-plugin-svelte3": "^4.0.0",
-		"jsdom": "^21.1.0",
-		"postcss-load-config": "^4.0.1",
-		"prettier": "^2.8.4",
-		"prettier-plugin-svelte": "^2.9.0",
-		"sass": "^1.58.3",
-		"svelte-check": "^3.0.4",
-		"svelte-preprocess": "^5.0.1",
-		"tslib": "^2.5.0",
+		"jsdom": "^21.1.2",
+		"postcss-load-config": "^4.0.2",
+		"prettier": "^2.8.8",
+		"prettier-plugin-svelte": "^2.10.1",
+		"sass": "^1.89.0",
+		"svelte-check": "^3.8.6",
+		"svelte-preprocess": "^5.1.4",
+		"tslib": "^2.8.1",
 		"typescript": "^4.9.5",
-		"vite": "^4.1.4",
-		"vitest": "^0.29.2"
+		"vite": "^4.5.14",
+		"vitest": "^0.29.8"
 	},
 	"type": "module",
 	"keywords": [
