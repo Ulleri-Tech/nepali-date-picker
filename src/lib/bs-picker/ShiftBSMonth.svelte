@@ -1,5 +1,6 @@
 <script lang="ts">
-	import NepaliDate from 'nepali-date-converter';
+	import NepaliDate from "$lib/packages/nepali-date-converter";
+
 	export let restrictfuture: boolean;
 	export let selectedMonth: number;
 	export let selectedYear: number;

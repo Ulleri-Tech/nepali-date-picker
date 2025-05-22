@@ -16,7 +16,8 @@
 		"checkJs": true,
 		"paths": {
 			"$lib": ["src/lib"],
-			"$lib/*": ["src/lib/*"]
+			"$lib/*": ["src/lib/*"],
+			"$lib/packages": ["src/lib/packages"]
 		},
 		"strict": true,
 		"types": ["vitest/globals"]
