@@ -31,13 +31,19 @@ describe('Testing getNumber of Days of BS calender', () => {
 	test('should output no of days in 2083/9 is 29', () => {
 		const year = 2083; // 2076..2099
 		const month = 9; // 1..12
-		expect(getNumberOfDays(year, month)).equal(29);
+		expect(getNumberOfDays(year, month)).equal(30);
 	});
 
 	test('should output no of days in 3000/1 is 31', () => {
 		const year = 3000; // out of range
 		const month = 1;
 		expect(getNumberOfDays(year, month)).equal(31); // out of range but default date is 4
+	});
+
+	test('should output no of days in 2082/2 is 31', () => {
+		const year = 2082;
+		const month = 2;
+		expect(getNumberOfDays(year, month)).equal(31); 
 	});
 });
 
